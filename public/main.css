@@ -206,6 +206,14 @@ a.active {
 }
 /* NAVBAR MOBILE STYLES END */
 /* NAVBAR STYLES END */
+/* FOOTER STYLES BEGIN */
+.footer {
+  width: 100vw;
+  height: 400px;
+  background: black;
+  color: white;
+}
+/* FOOTER STYLES END */
 /* LANDING STYLES BEGIN */
 .landingHome {
   padding-top: 100px;

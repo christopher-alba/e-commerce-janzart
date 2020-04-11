@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 class Navbar extends Component {
   state = {
     menuDisplayed: false,
-    currentPage: "home",
+    currentPage: "",
   }
 
   handleClick = () => {
@@ -19,7 +19,7 @@ class Navbar extends Component {
   }
   render() {
     return (
-      <div className='responsiveNav'>
+      <div className='responsiveNav' style={{ opacity: this.props.animation }}>
         <Responsive as={Segment} minWidth={1000}>
           <div className='navbar'>
             <div className='container'>

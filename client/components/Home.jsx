@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { animated } from "react-spring/renderprops"
+
 class Home extends Component {
   state = {}
 
   render() {
-    let style = this.props.animation
     return (
-      <animated.div style={{ ...style }}>
+      <animated.div style={{ ...this.props.style }}>
         <div className='landingHome'>
           <div className='container'>
             <h1>UNIQUE - TIMELESS - PLEASING</h1>
