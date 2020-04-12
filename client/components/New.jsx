@@ -2,30 +2,8 @@ import React, { Component } from "react"
 import { animated } from "react-spring/renderprops"
 import VisibilitySensor from "react-visibility-sensor"
 import ItemCards from "./ItemCards"
-import { searchQuery } from "./Navbar"
-class Products extends Component {
-  componentDidUpdate(prevProps) {
-    console.log(prevProps)
-
-    if (
-      this.props.renderProps.location.search !==
-      prevProps.renderProps.location.search
-    ) {
-      this.setState({ currentProducts: this.query })
-    }
-  }
-
-  getTitle = (query) => {
-    if (query.includes("new")) {
-      this.filter = "new"
-      return "NEW ARTWORKS"
-    } else {
-      this.filter = ""
-      return "VIEW ALL OUR ARTWORKS"
-    }
-  }
+class New extends Component {
   render() {
-    this.query = this.props.renderProps.location.search
     return (
       <animated.div style={{ ...this.props.style }} className='page'>
         <VisibilitySensor partialVisibility={true} minTopValue={50}>
@@ -36,7 +14,7 @@ class Products extends Component {
                   isVisible ? "visible" : "hidden"
                 }`}
               >
-                {this.title}
+                BROWSE OUR <span className='titleStrong'>NEW</span> ARTWORKS
               </h1>
             )
           }}
@@ -50,7 +28,7 @@ class Products extends Component {
                   isVisible ? "visible" : "hidden"
                 }`}
               >
-                <ItemCards searchFilter={searchQuery} />
+                <ItemCards filter='new' />
               </div>
             )
           }}
@@ -60,4 +38,4 @@ class Products extends Component {
   }
 }
 
-export default Products
+export default New

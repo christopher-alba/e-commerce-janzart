@@ -1,10 +1,11 @@
 import React, { Component } from "react"
 import { Responsive, Segment, Transition, List } from "semantic-ui-react"
 import { Link } from "react-router-dom"
+let searchQuery = ""
 class Navbar extends Component {
   state = {
     menuDisplayed: false,
-    currentPage: "",
+    searchQuery: "",
   }
 
   handleClick = () => {
@@ -14,8 +15,11 @@ class Navbar extends Component {
     this.setState({
       currentPage: evt.target.name,
     })
-
-    console.log(evt.target)
+  }
+  updateSearch = (evt) => {
+    console.log(this.state.searchQuery)
+    searchQuery = evt.target.value
+    this.setState({ searchQuery: evt.target.value })
   }
   render() {
     return (
@@ -26,12 +30,14 @@ class Navbar extends Component {
               <div className='nav-brand'>JANZART</div>
               <div className='nav-middle'>
                 <div>
-                  <form className='searchbar' action='/' method='post'>
-                    <input type='text' />
-                    <button type='submit'>
-                      <i className='fas fa-search'></i>
-                    </button>
-                  </form>
+                  <div className='searchbar'>
+                    <input type='text' onChange={this.updateSearch} />
+                    <Link to={`/products/${this.state.searchQuery}`}>
+                      <button type='submit'>
+                        <i className='fas fa-search'></i>
+                      </button>
+                    </Link>
+                  </div>
                 </div>
                 <div className='nav-links'>
                   <Link
@@ -51,7 +57,7 @@ class Navbar extends Component {
                     className={`nav-link ${
                       this.state.currentPage === "new" ? "active" : ""
                     }`}
-                    to='/products?filter=new'
+                    to='/new'
                   >
                     NEW
                   </Link>
@@ -175,7 +181,7 @@ class Menu extends Component {
             className={`nav-link ${
               this.state.currentPage === "new" ? "active" : ""
             }`}
-            to='/products?filter=new'
+            to='/new'
           >
             NEW
           </Link>
@@ -233,3 +239,5 @@ class Menu extends Component {
   }
 }
 export default Navbar
+
+export { searchQuery }

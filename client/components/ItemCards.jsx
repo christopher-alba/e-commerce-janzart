@@ -6,6 +6,8 @@ import { Link } from "react-router-dom"
 var counter = 0
 class ItemCards extends Component {
   render() {
+    console.log(this.props.searchFilter)
+
     return [1, 2, 3, 4, 5, 6].map(() => {
       return (
         <Link to='/products/1'>
@@ -20,7 +22,9 @@ class ItemCards extends Component {
             <div className='content'>
               <div className='header'>Matthew</div>
               <div className='meta'>
-                <span className='date'>{this.props.filter.toUpperCase()}</span>
+                <span className='date'>
+                  {this.props.filter ? this.props.filter.toUpperCase() : null}
+                </span>
               </div>
               <div className='description'>
                 Matthew is a musician living in Nashville.

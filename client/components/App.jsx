@@ -16,10 +16,12 @@ import Cart from "./Cart"
 import Profile from "./Profile"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
+import { searchQuery } from "./Navbar"
 import About from "./About"
 import Careers from "./Careers"
 import Custom from "./Custom"
 import Demo from "./Demo"
+import New from "./New"
 import { animated, Transition } from "react-spring/renderprops"
 import { Spring, config } from "react-spring/renderprops"
 import VisibilitySensor from "react-visibility-sensor"
@@ -79,7 +81,6 @@ class App extends React.Component {
               >
                 {(loc, state) => (style) => (
                   <Switch location={state === "update" ? location : loc}>
-                    {console.log(style)}
                     <Route
                       exact
                       path='/'
@@ -94,14 +95,21 @@ class App extends React.Component {
                     />
                     <Route
                       exact
-                      path='/products?filter=new'
+                      path='/new'
                       render={(props) => (
-                        <Products style={style} renderProps={props} />
+                        <New style={style} renderProps={props} />
                       )}
                     />
                     <Route
                       exact
-                      path='/products:id'
+                      path='/product/:id'
+                      render={(props) => (
+                        <Product style={style} renderProps={props} />
+                      )}
+                    />
+                    <Route
+                      exact
+                      path='/products/:id'
                       render={(props) => (
                         <Products style={style} renderProps={props} />
                       )}
