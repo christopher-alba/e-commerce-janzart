@@ -35,9 +35,13 @@ class App extends React.Component {
               props.location.pathname !== "/signup"
             ) {
               return (
-                <VisibilitySensor>
+                <VisibilitySensor partialVisibility={true}>
                   {({ isVisible }) => (
-                    <Spring delay={0} to={{ opacity: isVisible ? 1 : 0 }}>
+                    <Spring
+                      delay={0}
+                      to={{ opacity: isVisible ? 1 : 0 }}
+                      config={{ duration: 1000 }}
+                    >
                       {({ opacity }) => (
                         <Navbar animation={opacity} location={props.location} />
                       )}
@@ -71,6 +75,7 @@ class App extends React.Component {
                   transform: "translateY(-1000px)",
                   opacity: 0,
                 }}
+                config={{ duration: 1000 }}
               >
                 {(loc, state) => (style) => (
                   <Switch location={state === "update" ? location : loc}>
@@ -150,7 +155,7 @@ class App extends React.Component {
               props.location.pathname !== "/signup"
             ) {
               return (
-                <VisibilitySensor>
+                <VisibilitySensor partialVisibility={true} minTopValue={50}>
                   {({ isVisible }) => (
                     <Spring delay={0} to={{ opacity: isVisible ? 1 : 0 }}>
                       {({ opacity }) => <Footer animation={opacity} />}

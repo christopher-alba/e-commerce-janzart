@@ -144,7 +144,7 @@ class Navbar extends Component {
 
 class Menu extends Component {
   state = {
-    currentPage: "home",
+    currentPage: "",
   }
 
   handleLinkClick = (evt) => {
