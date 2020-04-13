@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { animated } from "react-spring/renderprops"
+import { animated, Spring } from "react-spring/renderprops"
 import VisibilitySensor from "react-visibility-sensor"
 import ItemCards from "./ItemCards"
 import { searchQuery } from "./Navbar"
@@ -28,19 +28,21 @@ class Products extends Component {
     this.query = this.props.renderProps.location.search
     return (
       <animated.div style={{ ...this.props.style }} className='page'>
-        <VisibilitySensor partialVisibility={true} minTopValue={50}>
-          {({ isVisible }) => {
-            return (
-              <h1
-                className={`home-featured-title ${
-                  isVisible ? "visible" : "hidden"
-                }`}
-              >
-                {this.title}
+        <Spring
+          delay={1000}
+          from={{ transform: "translateX(1000px)", opacity: 0 }}
+          to={{ transform: "translateX(0px)", opacity: 1 }}
+          config={{ duration: 1000 }}
+        >
+          {(props) => (
+            <div className='container ' style={{ ...props }}>
+              <h1 className='home-featured-title'>
+                {this.getTitle(this.query)}
+                <hr />
               </h1>
-            )
-          }}
-        </VisibilitySensor>
+            </div>
+          )}
+        </Spring>
 
         <VisibilitySensor partialVisibility={true} minTopValue={50}>
           {({ isVisible }) => {

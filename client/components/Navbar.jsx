@@ -6,6 +6,7 @@ class Navbar extends Component {
   state = {
     menuDisplayed: false,
     searchQuery: "",
+    currentPage: "",
   }
 
   handleClick = () => {
@@ -15,6 +16,13 @@ class Navbar extends Component {
     this.setState({
       currentPage: evt.target.name,
     })
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.pathName !== prevProps.pathName) {
+      this.setState({
+        currentPage: this.props.pathName.split("/")[1],
+      })
+    }
   }
   updateSearch = (evt) => {
     console.log(this.state.searchQuery)
@@ -41,10 +49,10 @@ class Navbar extends Component {
                 </div>
                 <div className='nav-links'>
                   <Link
-                    name='home'
+                    name=''
                     onMouseDown={this.handleLinkClick}
                     className={`nav-link ${
-                      this.state.currentPage === "home" ? "active" : ""
+                      this.state.currentPage === "" ? "active" : ""
                     }`}
                     to='/'
                   >
@@ -165,10 +173,10 @@ class Menu extends Component {
       <div className='nav-menu'>
         <div className='mobile-nav-links'>
           <Link
-            name='home'
+            name=''
             onMouseDown={this.handleLinkClick}
             className={`nav-link ${
-              this.state.currentPage === "home" ? "active" : ""
+              this.state.currentPage === "" ? "active" : ""
             }`}
             to='/'
           >

@@ -45,7 +45,10 @@ class App extends React.Component {
                       config={{ duration: 1000 }}
                     >
                       {({ opacity }) => (
-                        <Navbar animation={opacity} location={props.location} />
+                        <Navbar
+                          animation={opacity}
+                          pathName={props.location.pathname}
+                        />
                       )}
                     </Spring>
                   )}
@@ -68,7 +71,7 @@ class App extends React.Component {
                   opacity: 0,
                 }}
                 enter={{
-                  position: "relative",
+                  position: "static",
                   transform: "translateY(0px)",
                   opacity: 1,
                 }}
@@ -166,7 +169,12 @@ class App extends React.Component {
                 <VisibilitySensor partialVisibility={true} minTopValue={50}>
                   {({ isVisible }) => (
                     <Spring delay={0} to={{ opacity: isVisible ? 1 : 0 }}>
-                      {({ opacity }) => <Footer animation={opacity} />}
+                      {({ opacity }) => (
+                        <Footer
+                          animation={opacity}
+                          pathName={props.location.pathname}
+                        />
+                      )}
                     </Spring>
                   )}
                 </VisibilitySensor>

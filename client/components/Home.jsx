@@ -8,12 +8,12 @@ class Home extends Component {
 
   render() {
     return (
-      <animated.div style={{ ...this.props.style }}>
+      <animated.div style={{ ...this.props.style }} className='page'>
         <div className='landingHome'>
           <Spring
             delay={1000}
-            from={{ transform: "translateX(2000px)" }}
-            to={{ transform: "translateX(0px)" }}
+            from={{ transform: "translateX(1000px)", opacity: 0 }}
+            to={{ transform: "translateX(0px)", opacity: 1 }}
             config={{ duration: 1000 }}
           >
             {(props) => (
@@ -99,6 +99,7 @@ class Home extends Component {
                 }`}
               >
                 FEATURED ARTWORKS
+                <hr />
               </h1>
             )
           }}
@@ -126,6 +127,7 @@ class Home extends Component {
                 }`}
               >
                 ARTWORKS ON SALE
+                <hr />
               </h1>
             )
           }}
