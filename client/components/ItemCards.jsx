@@ -12,16 +12,54 @@ class ItemCards extends Component {
       products: [],
     }
   }
+  processFilters = (filters) => {
+    let letters = /^[0-9a-zA-Z]+$/
+    for (let i = 0; i < filters.length; i++) {
+      if (filters[i].match(letters) === false) {
+        filters.replace(filters[i], " ")
+      }
+    }
+    return filters
+  }
+  //search filter is a string that contains key words
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.searchFilter != prevProps.searchFilter ||
+      this.props.filter != prevProps.filter
+    ) {
+      let cleanString, filterSearchArray
+      if (this.props.searchFilter !== undefined) {
+        console.log(this.props.searchFilter)
+
+        cleanString = this.processFilters(this.props.searchFilter)
+        filterSearchArray = cleanString.split(" ")
+      } else {
+        filterSearchArray = this.props.searchFilter
+      }
+
+      getProducts(filterSearchArray, this.props.filter).then((products) => {
+        this.setState({ products: products })
+      })
+    }
+  }
   componentDidMount() {
-    getProducts(this.props.searchFilter).then((products) => {
+    let cleanString, filterSearchArray
+    if (this.props.searchFilter !== undefined) {
+      console.log(this.props.searchFilter)
+
+      cleanString = this.processFilters(this.props.searchFilter)
+      filterSearchArray = cleanString.split(" ")
+    } else {
+      filterSearchArray = this.props.searchFilter
+    }
+
+    getProducts(filterSearchArray, this.props.filter).then((products) => {
       console.log(products)
 
       this.setState({ products: products })
     })
   }
   render() {
-    console.log(this.props.searchFilter)
-
     return this.state.products.map((product) => {
       return (
         <Link to='/products/1'>
@@ -35,11 +73,7 @@ class ItemCards extends Component {
             </div>
             <div className='content'>
               <div className='header'>{product.itemName}</div>
-              <div className='meta'>
-                <span className='date'>
-                  {this.props.filter ? this.props.filter.toUpperCase() : null}
-                </span>
-              </div>
+
               <div className='description'>{product.itemDescription}</div>
             </div>
             <div className='extra content'>

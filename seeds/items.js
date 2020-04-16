@@ -14,7 +14,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 1000,
           favourites_count: 10000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "sale"])
         },
         {
           id: 2, item_name: "Art",
@@ -36,7 +36,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 1000,
           favourites_count: 10000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "sale"])
         },
         {
           id: 4, item_name: "Art",
@@ -58,7 +58,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 1000,
           favourites_count: 10000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "new", "featured", "sale"])
         },
         {
           id: 6, item_name: "Art",
@@ -69,7 +69,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 100,
           favourites_count: 1000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "new", "featured"])
         },
         {
           id: 7, item_name: "Beautiful Painting",
@@ -80,7 +80,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 1000,
           favourites_count: 10000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "new", "featured"])
         },
         {
           id: 8, item_name: "Art",
@@ -91,7 +91,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 100,
           favourites_count: 1000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "new", "featured"])
         },
         {
           id: 9, item_name: "Beautiful Painting",
@@ -102,7 +102,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 1000,
           favourites_count: 10000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "new", "featured", "sale"])
         },
         {
           id: 10, item_name: "Art",
@@ -113,7 +113,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 100,
           favourites_count: 1000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "new", "featured", "sale"])
         },
         {
           id: 11, item_name: "Beautiful Painting",
@@ -124,7 +124,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 1000,
           favourites_count: 10000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "sale"])
         },
         {
           id: 12, item_name: "Art",
@@ -135,7 +135,7 @@ exports.seed = function (knex) {
           item_review_ids: JSON.stringify([1, 2, 3, 4, 5]),
           order_count: 100,
           favourites_count: 1000,
-          categories: JSON.stringify(["vintage", "exotic"])
+          categories: JSON.stringify(["vintage", "exotic", "sale"])
         },
 
       ]);

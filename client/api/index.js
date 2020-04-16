@@ -1,10 +1,67 @@
 import request from 'superagent'
 
-export function getProducts(searchFilter) {
+export function getProducts(searchFilter, catFilter) {
+
     return request.get('/products')
         .then(products => {
-            console.log(products.body);
-            return products.body
+            console.log(products);
+
+            console.log(searchFilter)
+            let useSearchFilter = true
+            let useCatFilter = true
+            let productsArray = products.body
+            if (searchFilter === undefined || searchFilter[0] === "") {
+                useSearchFilter = false
+
+
+
+            }
+            if (catFilter === undefined || catFilter.length === 0) {
+                useCatFilter = false
+            }
+
+            console.log(useSearchFilter, useCatFilter);
+
+
+
+            let filteredArray = productsArray.filter(product => {
+                let match1 = false
+                let match2 = false
+
+                if (useSearchFilter === true) {
+                    searchFilter.forEach(filter => {
+                        if (
+                            product.itemName.includes(filter)
+                        ) {
+                            match1 = true
+                        }
+
+                    })
+                }
+                else {
+                    match1 = true
+                }
+                if (useCatFilter === true) {
+                    catFilter.forEach(filter => {
+                        if (
+                            product.categories.includes(filter)
+                        ) {
+                            match2 = true
+                        }
+                    })
+                }
+                else {
+                    match2 = true
+                }
+
+                return match1 && match2
+            })
+
+
+            console.log(filteredArray);
+            return filteredArray
+
+
         })
         .catch(errorHandler('GET', '/products'))
 }

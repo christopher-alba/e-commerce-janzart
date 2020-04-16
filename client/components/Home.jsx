@@ -113,7 +113,7 @@ class Home extends Component {
                   isVisible ? "visible" : "hidden"
                 }`}
               >
-                <ItemCards filter='featured' />
+                <ItemCards filter={["featured"]} />
               </div>
             )
           }}
@@ -141,7 +141,7 @@ class Home extends Component {
                   isVisible ? "visible" : "hidden"
                 }`}
               >
-                <ItemCards filter='sale' />
+                <ItemCards filter={["sale"]} />
               </div>
             )
           }}

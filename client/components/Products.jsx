@@ -2,16 +2,22 @@ import React, { Component } from "react"
 import { animated, Spring } from "react-spring/renderprops"
 import VisibilitySensor from "react-visibility-sensor"
 import ItemCards from "./ItemCards"
-import { searchQuery } from "./Navbar"
+import { searchQuery, catFilter } from "./Navbar"
 class Products extends Component {
-  componentDidUpdate(prevProps) {
-    console.log(prevProps)
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      searchQuery: "",
+      catFilter: [],
+    }
+  }
+  componentDidUpdate() {
     if (
-      this.props.renderProps.location.search !==
-      prevProps.renderProps.location.search
+      searchQuery != this.state.searchQuery ||
+      catFilter != this.state.catFilter
     ) {
-      this.setState({ currentProducts: this.query })
+      console.log("changing search Query")
+      this.setState({ searchQuery: searchQuery, catFilter: catFilter })
     }
   }
 
@@ -49,7 +55,10 @@ class Products extends Component {
                   isVisible ? "visible" : "hidden"
                 }`}
               >
-                <ItemCards searchFilter={searchQuery} />
+                <ItemCards
+                  searchFilter={this.state.searchQuery}
+                  catFilter={this.state.catFilter}
+                />
               </div>
             )
           }}

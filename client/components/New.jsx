@@ -30,7 +30,7 @@ class New extends Component {
                   isVisible ? "visible" : "hidden"
                 }`}
               >
-                <ItemCards filter='new' />
+                <ItemCards filter={["new"]} />
               </div>
             )
           }}
