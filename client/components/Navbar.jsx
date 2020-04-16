@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import { Responsive, Segment, Transition, List } from "semantic-ui-react"
+import { Responsive, Segment, List } from "semantic-ui-react"
 import { Link } from "react-router-dom"
+import { Transition, animated } from "react-spring/renderprops"
 let searchQuery = ""
 class Navbar extends Component {
   state = {
@@ -132,23 +133,36 @@ class Navbar extends Component {
             </div>
 
             <form className='searchbar' action='/' method='post'>
-              <input type='text' />
-              <button type='submit'>
-                <i className='fas fa-search'></i>
-              </button>
+              <input type='text' onChange={this.updateSearch} />
+              <Link to={`/products/${this.state.searchQuery}`}>
+                <button type='submit'>
+                  <i className='fas fa-search'></i>
+                </button>
+              </Link>
             </form>
             {/* <Transition animation='slide down' duration={500}>
               {this.state.menuDisplayed && <Menu />}
             </Transition> */}
           </div>
           <Transition
-            visible={this.state.menuDisplayed}
-            animation='slide down'
-            duration={500}
+            items={this.state.menuDisplayed}
+            from={{
+              opacity: 0,
+              transform: "translateY(-500px)",
+              position: "fixed",
+            }}
+            enter={{
+              opacity: 1,
+              transform: "translateY(0px)",
+              position: "fixed",
+            }}
+            leave={{
+              opacity: 0,
+              transform: "translateY(-500px)",
+              position: "fixed",
+            }}
           >
-            <List.Item>
-              <Menu />
-            </List.Item>
+            {(show) => show && ((props) => <Menu style={props} />)}
           </Transition>
         </Responsive>
       </div>
@@ -170,7 +184,7 @@ class Menu extends Component {
   }
   render() {
     return (
-      <div className='nav-menu'>
+      <animated.div style={this.props.style} className='nav-menu'>
         <div className='mobile-nav-links'>
           <Link
             name=''
@@ -242,7 +256,7 @@ class Menu extends Component {
             <div className='login'>LOGIN</div>
           </Link>
         </div>
-      </div>
+      </animated.div>
     )
   }
 }

@@ -38,10 +38,10 @@ class Footer extends Component {
         </div>
         <div className='footerNav'>
           <Link
-            name='home'
+            name=''
             onMouseDown={this.handleLinkClick}
             className={`nav-link ${
-              this.state.currentPage === "home" ? "active" : ""
+              this.state.currentPage === "" ? "active" : ""
             }`}
             to='/'
           >

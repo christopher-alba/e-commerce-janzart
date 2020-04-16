@@ -15,17 +15,14 @@ class Products extends Component {
     }
   }
 
-  getTitle = (query) => {
-    if (query.includes("new")) {
-      this.filter = "new"
-      return "NEW ARTWORKS"
+  getTitle = () => {
+    if (searchQuery !== "") {
+      return `VIEWING ALL ${searchQuery.toUpperCase()}`
     } else {
-      this.filter = ""
       return "VIEW ALL OUR ARTWORKS"
     }
   }
   render() {
-    this.query = this.props.renderProps.location.search
     return (
       <animated.div style={{ ...this.props.style }} className='page'>
         <Spring
@@ -37,7 +34,7 @@ class Products extends Component {
           {(props) => (
             <div className='container ' style={{ ...props }}>
               <h1 className='home-featured-title'>
-                {this.getTitle(this.query)}
+                {this.getTitle()}
                 <hr />
               </h1>
             </div>

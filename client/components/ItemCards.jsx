@@ -3,12 +3,26 @@ import { VisibilitySensor } from "react-visibility-sensor"
 import { Transition } from "react-spring/renderprops"
 import { Rating } from "semantic-ui-react"
 import { Link } from "react-router-dom"
+import { getProducts } from "../api/index"
 var counter = 0
 class ItemCards extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      products: [],
+    }
+  }
+  componentDidMount() {
+    getProducts(this.props.searchFilter).then((products) => {
+      console.log(products)
+
+      this.setState({ products: products })
+    })
+  }
   render() {
     console.log(this.props.searchFilter)
 
-    return [1, 2, 3, 4, 5, 6].map(() => {
+    return this.state.products.map((product) => {
       return (
         <Link to='/products/1'>
           <div className={`ui card ${true ? "visible" : "hidden"}`}>
@@ -20,21 +34,24 @@ class ItemCards extends Component {
               />
             </div>
             <div className='content'>
-              <div className='header'>Matthew</div>
+              <div className='header'>{product.itemName}</div>
               <div className='meta'>
                 <span className='date'>
                   {this.props.filter ? this.props.filter.toUpperCase() : null}
                 </span>
               </div>
-              <div className='description'>
-                Matthew is a musician living in Nashville.
-              </div>
+              <div className='description'>{product.itemDescription}</div>
             </div>
             <div className='extra content'>
               <a>
                 Rating
                 <Rating icon='heart' defaultRating={5} maxRating={5} disabled />
               </a>
+            </div>
+            <div className='extra content categories'>
+              {product.categories.map((category) => {
+                return <div className='cardCategory'>#{category}</div>
+              })}
             </div>
           </div>
         </Link>
