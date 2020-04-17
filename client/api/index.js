@@ -4,9 +4,10 @@ export function getProducts(searchFilter, catFilter) {
 
     return request.get('/products')
         .then(products => {
-            console.log(products);
+            // console.log(products);
 
-            console.log(searchFilter)
+
+            // console.log(searchFilter)
             let useSearchFilter = true
             let useCatFilter = true
             let productsArray = products.body
@@ -29,11 +30,21 @@ export function getProducts(searchFilter, catFilter) {
                 let match2 = false
 
                 if (useSearchFilter === true) {
+
+
+
                     searchFilter.forEach(filter => {
+                        console.log(filter);
+
+                        filter = filter.toLowerCase()
+                        let productName = product.itemName.toLowerCase()
                         if (
-                            product.itemName.includes(filter)
+                            productName.includes(filter)
+
+
                         ) {
                             match1 = true
+
                         }
 
                     })
@@ -42,9 +53,12 @@ export function getProducts(searchFilter, catFilter) {
                     match1 = true
                 }
                 if (useCatFilter === true) {
+
                     catFilter.forEach(filter => {
+                        filter = filter.toLowerCase()
+                        let productCat = product.categories.toLowerCase()
                         if (
-                            product.categories.includes(filter)
+                            productCat.includes(filter)
                         ) {
                             match2 = true
                         }
@@ -52,13 +66,15 @@ export function getProducts(searchFilter, catFilter) {
                 }
                 else {
                     match2 = true
+                    console.log("match2 true!");
+
                 }
 
                 return match1 && match2
             })
 
 
-            console.log(filteredArray);
+
             return filteredArray
 
 

@@ -8,6 +8,7 @@ class Navbar extends Component {
     menuDisplayed: false,
     searchQuery: "",
     currentPage: "",
+    catFilter: [],
   }
 
   handleClick = () => {

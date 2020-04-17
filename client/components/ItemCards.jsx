@@ -13,12 +13,14 @@ class ItemCards extends Component {
     }
   }
   processFilters = (filters) => {
-    let letters = /^[0-9a-zA-Z]+$/
+    let letters = /^[0-9a-zA-Z\s]+$/
     for (let i = 0; i < filters.length; i++) {
-      if (filters[i].match(letters) === false) {
-        filters.replace(filters[i], " ")
+      if (filters[i].match(letters) === null) {
+        filters = filters.replace(filters[i], "")
+        i--
       }
     }
+
     return filters
   }
   //search filter is a string that contains key words
@@ -29,8 +31,6 @@ class ItemCards extends Component {
     ) {
       let cleanString, filterSearchArray
       if (this.props.searchFilter !== undefined) {
-        console.log(this.props.searchFilter)
-
         cleanString = this.processFilters(this.props.searchFilter)
         filterSearchArray = cleanString.split(" ")
       } else {
@@ -45,8 +45,6 @@ class ItemCards extends Component {
   componentDidMount() {
     let cleanString, filterSearchArray
     if (this.props.searchFilter !== undefined) {
-      console.log(this.props.searchFilter)
-
       cleanString = this.processFilters(this.props.searchFilter)
       filterSearchArray = cleanString.split(" ")
     } else {
@@ -54,8 +52,6 @@ class ItemCards extends Component {
     }
 
     getProducts(filterSearchArray, this.props.filter).then((products) => {
-      console.log(products)
-
       this.setState({ products: products })
     })
   }
