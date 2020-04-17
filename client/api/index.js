@@ -45,20 +45,23 @@ export function getProducts(searchFilter, catFilter) {
                         ) {
                             match1 = true
 
+
+
                         }
 
                     })
                 }
                 else {
+                    console.log("match1 true");
                     match1 = true
                 }
                 if (useCatFilter === true) {
 
                     catFilter.forEach(filter => {
                         filter = filter.toLowerCase()
-                        let productCat = product.categories.toLowerCase()
+                        let productCats = product.categories.map(cat => cat.toLowerCase())
                         if (
-                            productCat.includes(filter)
+                            productCats.includes(filter)
                         ) {
                             match2 = true
                         }
