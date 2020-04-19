@@ -11,10 +11,14 @@ class Navbar extends Component {
 		searchQuery: '',
 		currentPage: '',
 		catFilter: [],
+		catDisplayed: false,
 	}
 
 	handleClick = () => {
 		this.setState({ menuDisplayed: !this.state.menuDisplayed })
+	}
+	handleCategories = () => {
+		this.setState({ catDisplayed: !this.state.catDisplayed })
 	}
 	handleLinkClick = evt => {
 		this.setState({
@@ -45,82 +49,7 @@ class Navbar extends Component {
 					<div className='navbar'>
 						<div className='container'>
 							<div className='nav-brand'>JANZART</div>
-							<div className='nav-middle'>
-								<div className='nav-links'>
-									<Link
-										name=''
-										onMouseDown={this.handleLinkClick}
-										className={`nav-link ${
-											this.state.currentPage === '' ? 'active' : ''
-										}`}
-										to='/'
-									>
-										HOME
-									</Link>
 
-									<Link
-										name='new'
-										onMouseDown={this.handleLinkClick}
-										className={`nav-link ${
-											this.state.currentPage === 'new' ? 'active' : ''
-										}`}
-										to='/new'
-									>
-										NEW
-									</Link>
-									<Link
-										name='products'
-										onMouseDown={this.handleLinkClick}
-										className={`nav-link ${
-											this.state.currentPage === 'products' ? 'active' : ''
-										}`}
-										to='/products'
-									>
-										PRODUCTS
-									</Link>
-									<Link
-										name='custom'
-										onMouseDown={this.handleLinkClick}
-										className={`nav-link ${
-											this.state.currentPage === 'custom' ? 'active' : ''
-										}`}
-										to='/custom'
-									>
-										CUSTOM
-									</Link>
-									<Link
-										name='about'
-										onMouseDown={this.handleLinkClick}
-										className={`nav-link ${
-											this.state.currentPage === 'about' ? 'active' : ''
-										}`}
-										to='/about'
-									>
-										ABOUT
-									</Link>
-									<Link
-										name='careers'
-										onMouseDown={this.handleLinkClick}
-										className={`nav-link ${
-											this.state.currentPage === 'careers' ? 'active' : ''
-										}`}
-										to='/careers'
-									>
-										CAREERS
-									</Link>
-								</div>
-								<div>
-									<div className='searchbar'>
-										<input type='text' onChange={this.updateSearch} />
-										<Link to={`/products/${this.state.searchQuery}`}>
-											<button type='submit'>
-												<i className='fas fa-search'></i>
-											</button>
-										</Link>
-									</div>
-									<CatDropdown onChange={this.updateFilter} />
-								</div>
-							</div>
 							<div className='nav-end'>
 								<div className='nav-cart'>
 									<i className='fas fa-shopping-cart'></i>
@@ -129,6 +58,122 @@ class Navbar extends Component {
 									<div className='login'>LOGIN</div>
 								</Link>
 							</div>
+						</div>
+					</div>
+					<div className='nav-middle'>
+						<div className='nav-links'>
+							<div className='nav-links-inner'>
+								<Link
+									name=''
+									onMouseDown={this.handleLinkClick}
+									className={`nav-link ${
+										this.state.currentPage === '' ? 'active' : ''
+									}`}
+									to='/'
+								>
+									HOME
+								</Link>
+
+								<Link
+									name='new'
+									onMouseDown={this.handleLinkClick}
+									className={`nav-link ${
+										this.state.currentPage === 'new' ? 'active' : ''
+									}`}
+									to='/new'
+								>
+									NEW
+								</Link>
+								<Link
+									name='products'
+									onMouseDown={this.handleLinkClick}
+									className={`nav-link ${
+										this.state.currentPage === 'products' ? 'active' : ''
+									}`}
+									to='/products'
+								>
+									PRODUCTS
+								</Link>
+								<Link
+									name='custom'
+									onMouseDown={this.handleLinkClick}
+									className={`nav-link ${
+										this.state.currentPage === 'custom' ? 'active' : ''
+									}`}
+									to='/custom'
+								>
+									CUSTOM
+								</Link>
+								<Link
+									name='about'
+									onMouseDown={this.handleLinkClick}
+									className={`nav-link ${
+										this.state.currentPage === 'about' ? 'active' : ''
+									}`}
+									to='/about'
+								>
+									ABOUT
+								</Link>
+								<Link
+									name='careers'
+									onMouseDown={this.handleLinkClick}
+									className={`nav-link ${
+										this.state.currentPage === 'careers' ? 'active' : ''
+									}`}
+									to='/careers'
+								>
+									CONTACT
+								</Link>
+								<Link
+									name='careers'
+									onMouseDown={this.handleLinkClick}
+									className={`nav-link ${
+										this.state.currentPage === 'careers' ? 'active' : ''
+									}`}
+									to='/careers'
+								>
+									CAREERS
+								</Link>
+							</div>
+						</div>
+						<div>
+							<form className='searchbar'>
+								<button onClick={this.handleCategories}>
+									FILTERS <i class='far fa-caret-square-down'></i>
+								</button>
+								<input
+									type='text'
+									onChange={this.updateSearch}
+									placeholder='Search for names and filters'
+								/>
+								<Link to={`/products/${this.state.searchQuery}`}>
+									<button type='submit'>
+										<i className='fas fa-search'></i>
+									</button>
+								</Link>
+							</form>
+							<Transition
+								items={this.state.catDisplayed}
+								from={{
+									opacity: 0,
+									position: 'fixed',
+								}}
+								enter={{
+									opacity: 1,
+									position: 'absolute',
+								}}
+								leave={{
+									opacity: 0,
+									position: 'fixed',
+								}}
+							>
+								{show =>
+									show &&
+									(props => (
+										<CatDropdown onChange={this.updateFilter} style={props} />
+									))
+								}
+							</Transition>
 						</div>
 					</div>
 				</Responsive>
@@ -149,6 +194,7 @@ class Navbar extends Component {
 								</button>
 							</Link>
 						</form>
+						<CatDropdown onChange={this.updateFilter} />
 						{/* <Transition animation='slide down' duration={500}>
               {this.state.menuDisplayed && <Menu />}
             </Transition> */}

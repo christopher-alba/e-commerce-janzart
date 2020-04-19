@@ -7,5 +7,5 @@ server.use(express.json())
 
 
 server.use(express.static(path.resolve('public')))
-server.use('/products', products)
+server.use(products)
 module.exports = server

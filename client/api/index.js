@@ -21,7 +21,7 @@ export function getProducts(searchFilter, catFilter) {
                 useCatFilter = false
             }
 
-            console.log(useSearchFilter, useCatFilter);
+            // console.log(useSearchFilter, useCatFilter);
 
 
 
@@ -30,29 +30,21 @@ export function getProducts(searchFilter, catFilter) {
                 let match2 = false
 
                 if (useSearchFilter === true) {
-
-
-
                     searchFilter.forEach(filter => {
-                        console.log(filter);
+                        // console.log(filter);
 
                         filter = filter.toLowerCase()
                         let productName = product.itemName.toLowerCase()
+                        let productCats = product.categories.map(cat => cat.toLowerCase())
                         if (
-                            productName.includes(filter)
-
-
+                            productName.includes(filter) || productCats.includes(filter)
                         ) {
                             match1 = true
-
-
-
                         }
-
                     })
                 }
                 else {
-                    console.log("match1 true");
+                    // console.log("match1 true");
                     match1 = true
                 }
                 if (useCatFilter === true) {
@@ -69,7 +61,7 @@ export function getProducts(searchFilter, catFilter) {
                 }
                 else {
                     match2 = true
-                    console.log("match2 true!");
+                    // console.log("match2 true!");
 
                 }
 
@@ -85,6 +77,11 @@ export function getProducts(searchFilter, catFilter) {
         .catch(errorHandler('GET', '/products'))
 }
 
+export function getProduct(id) {
+    return request.get(`/product/${id}`)
+        .then(product => product)
+        .catch(errorHandler('GET', `/product/${id}`))
+}
 function errorHandler(method, route) {
     return (err) => {
         if (err.message === 'Not Found') {
