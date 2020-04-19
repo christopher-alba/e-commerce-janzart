@@ -97,7 +97,7 @@ hr {
 	font-weight: 200;
 	display: flex;
 	align-items: center;
-	justify-content: center;s
+	justify-content: center;
 }
 .responsiveNav .ui.segment {
 	padding: 0px;
@@ -222,9 +222,9 @@ a.active {
 	display: flex !important;
 	justify-content: center !important;
 }
-.ui.selection.active.dropdown .menu{
-	width:300px !important;
-	min-width:fit-content !important;
+.ui.selection.active.dropdown .menu {
+	width: 300px !important;
+	min-width: fit-content !important;
 }
 .ui.label {
 	border-radius: 0px !important;

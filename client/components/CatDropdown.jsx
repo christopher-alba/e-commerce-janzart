@@ -1,6 +1,5 @@
 import React from 'react'
-import { Dropdown } from 'semantic-ui-react'
-
+import { Checkbox } from 'semantic-ui-react'
 const options = [
 	{ key: 'vintage', text: 'Vintage', value: 'vintage' },
 	{ key: 'exotic', text: 'Exotic', value: 'exotic' },
@@ -9,17 +8,51 @@ const options = [
 	{ key: 'featured', text: 'Featured', value: 'featured' },
 ]
 
-const dropdown = props => (
-	<Dropdown
-		placeholder='Select your filters here.'
-		fluid
-		multiple
-		selection
-		options={options}
-		onChange={(e, data) => {
-			props.onChange(data.value)
-		}}
-		style={{ ...props.style }}
-	/>
-)
-export default dropdown
+class CatDropdown extends React.Component {
+	state = {
+		categories: [],
+	}
+
+	handleChecked = tag => {
+		let cats = this.state.categories
+		cats.push(tag)
+		this.setState({ categories: cats }, () => {
+			this.props.onChange(this.state.categories)
+		})
+	}
+	handleUnchecked = tag => {
+		let cats = this.state.categories
+		cats = cats.filter(cat => {
+			if (cat === tag) {
+				return false
+			}
+			return true
+		})
+		this.setState({ categories: cats }, () => {
+			this.props.onChange(this.state.categories)
+		})
+	}
+	render() {
+		return (
+			<div style={{ ...this.props.style }}>
+				{options.map(option => {
+					return (
+						<Checkbox
+							label={<label>{option.text}</label>}
+							value={option.value}
+							onChange={(evt, data) => {
+								if (data.checked) {
+									this.handleChecked(data.value)
+								} else {
+									this.handleUnchecked(data.value)
+								}
+							}}
+						/>
+					)
+				})}
+			</div>
+		)
+	}
+}
+
+export default CatDropdown
