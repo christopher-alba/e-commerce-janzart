@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox } from 'semantic-ui-react'
+import { Checkbox, Dropdown } from 'semantic-ui-react'
 const options = [
 	{ key: 'vintage', text: 'Vintage', value: 'vintage' },
 	{ key: 'exotic', text: 'Exotic', value: 'exotic' },
@@ -34,10 +34,11 @@ class CatDropdown extends React.Component {
 	}
 	render() {
 		return (
-			<div style={{ ...this.props.style }}>
+			<div className='filterMenu' style={{ ...this.props.style }}>
 				{options.map(option => {
 					return (
 						<Checkbox
+							key={option.value}
 							label={<label>{option.text}</label>}
 							value={option.value}
 							onChange={(evt, data) => {

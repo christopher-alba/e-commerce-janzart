@@ -25,6 +25,11 @@ class Navbar extends Component {
 			currentPage: evt.target.name,
 		})
 	}
+	componentDidMount() {
+		this.setState({
+			currentPage: this.props.pathName.split('/')[1],
+		})
+	}
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		if (this.props.pathName !== prevProps.pathName) {
 			this.setState({
@@ -69,8 +74,7 @@ class Navbar extends Component {
 									className={`nav-link ${
 										this.state.currentPage === '' ? 'active' : ''
 									}`}
-									to='/'
-								>
+									to='/'>
 									HOME
 								</Link>
 
@@ -80,8 +84,7 @@ class Navbar extends Component {
 									className={`nav-link ${
 										this.state.currentPage === 'new' ? 'active' : ''
 									}`}
-									to='/new'
-								>
+									to='/new'>
 									NEW
 								</Link>
 								<Link
@@ -90,8 +93,7 @@ class Navbar extends Component {
 									className={`nav-link ${
 										this.state.currentPage === 'products' ? 'active' : ''
 									}`}
-									to='/products'
-								>
+									to='/products'>
 									PRODUCTS
 								</Link>
 								<Link
@@ -100,8 +102,7 @@ class Navbar extends Component {
 									className={`nav-link ${
 										this.state.currentPage === 'custom' ? 'active' : ''
 									}`}
-									to='/custom'
-								>
+									to='/custom'>
 									CUSTOM
 								</Link>
 								<Link
@@ -110,8 +111,7 @@ class Navbar extends Component {
 									className={`nav-link ${
 										this.state.currentPage === 'about' ? 'active' : ''
 									}`}
-									to='/about'
-								>
+									to='/about'>
 									ABOUT
 								</Link>
 								<Link
@@ -120,8 +120,7 @@ class Navbar extends Component {
 									className={`nav-link ${
 										this.state.currentPage === 'careers' ? 'active' : ''
 									}`}
-									to='/careers'
-								>
+									to='/careers'>
 									CONTACT
 								</Link>
 								<Link
@@ -130,8 +129,7 @@ class Navbar extends Component {
 									className={`nav-link ${
 										this.state.currentPage === 'careers' ? 'active' : ''
 									}`}
-									to='/careers'
-								>
+									to='/careers'>
 									CAREERS
 								</Link>
 							</div>
@@ -165,8 +163,7 @@ class Navbar extends Component {
 								leave={{
 									opacity: 0,
 									position: 'fixed',
-								}}
-							>
+								}}>
 								{show =>
 									show &&
 									(props => (
@@ -186,7 +183,10 @@ class Navbar extends Component {
 							</div>
 						</div>
 
-						<form className='searchbar' action='/' method='post'>
+						<form className='searchbar'>
+							<button onClick={this.handleCategories}>
+								FILTERS <i class='far fa-caret-square-down'></i>
+							</button>
 							<input type='text' onChange={this.updateSearch} />
 							<Link to={`/products/${this.state.searchQuery}`}>
 								<button type='submit'>
@@ -194,10 +194,27 @@ class Navbar extends Component {
 								</button>
 							</Link>
 						</form>
-						<CatDropdown onChange={this.updateFilter} />
-						{/* <Transition animation='slide down' duration={500}>
-              {this.state.menuDisplayed && <Menu />}
-            </Transition> */}
+						<Transition
+							items={this.state.catDisplayed}
+							from={{
+								opacity: 0,
+								position: 'fixed',
+							}}
+							enter={{
+								opacity: 1,
+								position: 'absolute',
+							}}
+							leave={{
+								opacity: 0,
+								position: 'fixed',
+							}}>
+							{show =>
+								show &&
+								(props => (
+									<CatDropdown onChange={this.updateFilter} style={props} />
+								))
+							}
+						</Transition>
 					</div>
 					<Transition
 						items={this.state.menuDisplayed}
@@ -215,8 +232,7 @@ class Navbar extends Component {
 							opacity: 0,
 							transform: 'translateY(-500px)',
 							position: 'fixed',
-						}}
-					>
+						}}>
 						{show => show && (props => <Menu style={props} />)}
 					</Transition>
 				</Responsive>
@@ -247,8 +263,7 @@ class Menu extends Component {
 						className={`nav-link ${
 							this.state.currentPage === '' ? 'active' : ''
 						}`}
-						to='/'
-					>
+						to='/'>
 						HOME
 					</Link>
 
@@ -258,8 +273,7 @@ class Menu extends Component {
 						className={`nav-link ${
 							this.state.currentPage === 'new' ? 'active' : ''
 						}`}
-						to='/new'
-					>
+						to='/new'>
 						NEW
 					</Link>
 					<Link
@@ -268,8 +282,7 @@ class Menu extends Component {
 						className={`nav-link ${
 							this.state.currentPage === 'products' ? 'active' : ''
 						}`}
-						to='/products'
-					>
+						to='/products'>
 						PRODUCTS
 					</Link>
 					<Link
@@ -278,8 +291,7 @@ class Menu extends Component {
 						className={`nav-link ${
 							this.state.currentPage === 'custom' ? 'active' : ''
 						}`}
-						to='/custom'
-					>
+						to='/custom'>
 						CUSTOM
 					</Link>
 					<Link
@@ -288,8 +300,7 @@ class Menu extends Component {
 						className={`nav-link ${
 							this.state.currentPage === 'about' ? 'active' : ''
 						}`}
-						to='/about'
-					>
+						to='/about'>
 						ABOUT
 					</Link>
 					<Link
@@ -298,8 +309,7 @@ class Menu extends Component {
 						className={`nav-link ${
 							this.state.currentPage === 'careers' ? 'active' : ''
 						}`}
-						to='/careers'
-					>
+						to='/careers'>
 						CAREERS
 					</Link>
 				</div>

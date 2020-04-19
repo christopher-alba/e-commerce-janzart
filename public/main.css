@@ -199,12 +199,25 @@ a.active {
 	cursor: pointer;
 	display: flex;
 }
+
 .searchbar button i.fa-caret-square-down {
 	padding-left: 50px;
 }
+@media (max-width: 500px) {
+	.searchbar button {
+		width: fit-content;
+		padding: 0 10px 0 10px;
+		border: none;
+		background: white;
+		cursor: pointer;
+		display: flex;
+	}
+	.searchbar button i.fa-caret-square-down {
+		padding-left: 10px;
+	}
+}
 .searchbar button:hover,
 .searchbar button:focus {
-	background: rgb(253, 232, 138);
 	outline: none;
 }
 .ui.selection.dropdown {
@@ -231,6 +244,18 @@ a.active {
 	background: rgb(0, 0, 0) !important;
 	color: rgb(255, 255, 255) !important;
 }
+.filterMenu {
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	border: 1px solid rgba(37, 37, 37, 0.466);
+	border-top: none;
+	width: 170px;
+	background: white;
+}
+.filterMenu .ui.checkbox {
+	padding: 10px;
+}
 .nav-end {
 	text-align: center;
 	font-size: 1rem;
@@ -252,7 +277,8 @@ a.active {
 
 /* NAVBAR MOBILE STYLES START */
 .mobile-nav {
-	background: rgb(241, 241, 241);
+	background: url(janzart-nav.jpg);
+	background-size: 100% 60%;
 	position: relative;
 	z-index: 1;
 }
