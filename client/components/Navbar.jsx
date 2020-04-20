@@ -52,15 +52,19 @@ class Navbar extends Component {
 			<div className='responsiveNav' style={{ opacity: this.props.animation }}>
 				<Responsive as={Segment} minWidth={1000}>
 					<div className='navbar'>
+						<div className='navbarImg'></div>
 						<div className='container'>
 							<div className='nav-brand'>JANZART</div>
 
 							<div className='nav-end'>
-								<div className='nav-cart'>
-									<i className='fas fa-shopping-cart'></i>
-								</div>
+								<Link className='login' to='/cart'>
+									<i className='fas fa-shopping-cart nav-cart'></i>
+								</Link>
 								<Link to='/login'>
 									<div className='login'>LOGIN</div>
+								</Link>
+								<Link className='login' to='/signup'>
+									<div className='signup'>SIGN UP</div>
 								</Link>
 							</div>
 						</div>
@@ -137,7 +141,7 @@ class Navbar extends Component {
 						<div>
 							<form className='searchbar'>
 								<button onClick={this.handleCategories}>
-									FILTERS <i class='far fa-caret-square-down'></i>
+									FILTERS <i className='far fa-caret-square-down'></i>
 								</button>
 								<input
 									type='text'
@@ -185,7 +189,7 @@ class Navbar extends Component {
 
 						<form className='searchbar'>
 							<button onClick={this.handleCategories}>
-								FILTERS <i class='far fa-caret-square-down'></i>
+								FILTERS <i className='far fa-caret-square-down'></i>
 							</button>
 							<input type='text' onChange={this.updateSearch} />
 							<Link to={`/products/${this.state.searchQuery}`}>

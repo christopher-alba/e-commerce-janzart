@@ -42,8 +42,7 @@ class App extends React.Component {
 										<Spring
 											delay={0}
 											to={{ opacity: isVisible ? 1 : 0 }}
-											config={{ duration: 1000 }}
-										>
+											config={{ duration: 1000 }}>
 											{({ opacity }) => (
 												<Navbar
 													animation={opacity}
@@ -77,12 +76,11 @@ class App extends React.Component {
 										opacity: 1,
 									}}
 									leave={{
-										position: 'fixed',
+										position: 'static',
 										transform: 'translateY(-1000px)',
 										opacity: 0,
 									}}
-									config={{ duration: 1000 }}
-								>
+									config={{ duration: 1000 }}>
 									{(loc, state) => style => (
 										<Switch location={state === 'update' ? location : loc}>
 											<Route
@@ -153,20 +151,16 @@ class App extends React.Component {
 									from={{
 										position: 'fixed',
 										opacity: 0,
-										background: 'linear-gradient(to right, #ffc3a0, #ffafbd)',
 									}}
 									enter={{
 										position: 'static',
 										opacity: 1,
-										background: 'linear-gradient(to right, #ffafbd , #ffc3a0)',
 									}}
 									leave={{
 										position: 'fixed',
 										opacity: 0,
-										background: 'white',
 									}}
-									config={{ duration: 2000 }}
-								>
+									config={{ duration: 2000 }}>
 									{(loc, state) => style => (
 										<Switch location={state === 'update' ? location : loc}>
 											<Route

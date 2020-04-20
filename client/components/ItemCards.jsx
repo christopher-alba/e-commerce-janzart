@@ -4,6 +4,7 @@ import { Transition } from 'react-spring/renderprops'
 import { Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { getProducts } from '../api/index'
+import { Carousel } from 'react-responsive-carousel'
 var counter = 0
 class ItemCards extends Component {
 	constructor(props) {
@@ -56,37 +57,79 @@ class ItemCards extends Component {
 		})
 	}
 	render() {
-		return this.state.products.map(product => {
-			return (
-				<Link key={product.id} to={`/product/${product.id}`}>
-					<div className={`ui card ${true ? 'visible' : 'hidden'}`}>
-						<div className='image'>
-							<img
-								src={`https://picsum.photos/${Math.floor(
-									Math.random() * 600 + 1000
-								)}/500?random=${counter++}`}
-							/>
-						</div>
-						<div className='content'>
-							<div className='header'>{product.itemName}</div>
+		return this.props.carousel ? (
+			<Carousel autoPlay={true} infiniteLoop={true}>
+				{this.state.products.map(product => {
+					return (
+						<Link key={product.id} to={`/product/${product.id}`}>
+							<div className={`ui card ${true ? 'visible' : 'hidden'}`}>
+								<div className='image'>
+									<img
+										src={`https://picsum.photos/${1500}/500?random=${counter++}`}
+									/>
+								</div>
+								<div className='content'>
+									<div className='header'>{product.itemName}</div>
 
-							<div className='description'>{product.itemDescription}</div>
-						</div>
-						<div className='extra content'>
-							<div>
-								Rating
-								<Rating icon='heart' defaultRating={5} maxRating={5} disabled />
+									<div className='description'>{product.itemDescription}</div>
+								</div>
+								<div className='extra content'>
+									<div>
+										Rating
+										<Rating
+											icon='star'
+											defaultRating={5}
+											maxRating={5}
+											disabled
+										/>
+									</div>
+								</div>
+								<div className='extra content categories'>
+									{product.categories.map(category => {
+										return <div className='cardCategory'>#{category}</div>
+									})}
+								</div>
+							</div>
+						</Link>
+					)
+				})}
+			</Carousel>
+		) : (
+			this.state.products.map(product => {
+				return (
+					<Link key={product.id} to={`/product/${product.id}`}>
+						<div className={`ui card ${true ? 'visible' : 'hidden'}`}>
+							<div className='image'>
+								<img
+									src={`https://picsum.photos/${1500}/500?random=${counter++}`}
+								/>
+							</div>
+							<div className='content'>
+								<div className='header'>{product.itemName}</div>
+
+								<div className='description'>{product.itemDescription}</div>
+							</div>
+							<div className='extra content'>
+								<div>
+									Rating
+									<Rating
+										icon='star'
+										defaultRating={5}
+										maxRating={5}
+										disabled
+									/>
+								</div>
+							</div>
+							<div className='extra content categories'>
+								{product.categories.map(category => {
+									return <div className='cardCategory'>#{category}</div>
+								})}
 							</div>
 						</div>
-						<div className='extra content categories'>
-							{product.categories.map(category => {
-								return <div className='cardCategory'>#{category}</div>
-							})}
-						</div>
-					</div>
-				</Link>
-			)
-		})
+					</Link>
+				)
+			})
+		)
 	}
 }
 

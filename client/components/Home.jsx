@@ -4,6 +4,7 @@ import { animated, Spring } from 'react-spring/renderprops'
 import VisibilitySensor from 'react-visibility-sensor'
 import ItemCards from './ItemCards'
 import { Container } from 'semantic-ui-react'
+import { Carousel } from 'react-responsive-carousel'
 class Home extends Component {
 	state = {}
 
@@ -19,7 +20,7 @@ class Home extends Component {
 						{props => (
 							<div className='container' style={{ ...props }}>
 								<h1>
-									<Container>UNIQUE - TIMELESS - PLEASING</Container>
+									<Container>UNIQUE - TIMELESS - ELEGANT</Container>
 								</h1>
 							</div>
 						)}
@@ -108,12 +109,14 @@ class Home extends Component {
 				<VisibilitySensor partialVisibility={true} minTopValue={50}>
 					{({ isVisible }) => {
 						return (
-							<div
-								className={`home-featured-items ${
-									isVisible ? 'visible' : 'hidden'
-								}`}>
-								<ItemCards filter={['featured']} />
-							</div>
+							<Container>
+								<div
+									className={`home-featured-items ${
+										isVisible ? 'visible' : 'hidden'
+									}`}>
+									<ItemCards filter={['featured']} carousel={true} />
+								</div>
+							</Container>
 						)
 					}}
 				</VisibilitySensor>
@@ -135,12 +138,14 @@ class Home extends Component {
 				<VisibilitySensor partialVisibility={true} minTopValue={50}>
 					{({ isVisible }) => {
 						return (
-							<div
-								className={`home-featured-items ${
-									isVisible ? 'visible' : 'hidden'
-								}`}>
-								<ItemCards filter={['sale']} />
-							</div>
+							<Container>
+								<div
+									className={`home-featured-items ${
+										isVisible ? 'visible' : 'hidden'
+									}`}>
+									<ItemCards filter={['sale']} carousel={true} />
+								</div>
+							</Container>
 						)
 					}}
 				</VisibilitySensor>
