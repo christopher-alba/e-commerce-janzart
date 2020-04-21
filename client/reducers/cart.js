@@ -32,8 +32,9 @@ const cart = (state = { items: [] }, action) => {
         case 'REMOVE_FROM_CART':
             return {
                 items: state.items.filter(itemObj => {
+                    console.log(itemObj);
 
-                    return itemObj.item.id !== action.item.id
+                    return itemObj.item.id !== action.id
 
                 })
             }
