@@ -46,7 +46,7 @@ ul li.thumb img.productImg {
 /* card styles start */
 .home-featured-items a .ui.card {
 	width: 95% !important;
-	border: 3px solid black;
+	border: 1px solid rgba(0, 0, 0, 0.658);
 	border-radius: 0.5rem;
 }
 .home-featured-items a {
@@ -745,8 +745,12 @@ h2:first-child {
 	display: flex;
 }
 .productCat {
-	padding-right: 30px;
+	margin-right: 15px;
 	color: orange;
+	background: black;
+	border-radius: 0.5rem;
+	text-align: center;
+	padding: 10px;
 }
 .productPage i.fas.fa-heart {
 	color: rgb(253, 70, 70);

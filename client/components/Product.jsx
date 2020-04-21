@@ -3,6 +3,8 @@ import { animated } from 'react-spring/renderprops'
 import { getProduct } from '../api/index'
 import { Container, Rating } from 'semantic-ui-react'
 import { Carousel } from 'react-responsive-carousel'
+import { connect } from 'react-redux'
+import { addToCart } from '../actions/index'
 class Product extends Component {
 	state = {
 		product: null,
@@ -16,8 +18,27 @@ class Product extends Component {
 			.then(product => {
 				this.setState({ product: product })
 			})
+		window.scrollTo(0, 0)
 	}
-
+	componentDidUpdate(prevProps) {
+		if (
+			prevProps.renderProps.match.params.id !=
+			this.props.renderProps.match.params.id
+		) {
+			getProduct(this.props.renderProps.match.params.id)
+				.then(res => {
+					return res.body
+				})
+				.then(product => {
+					this.setState({ product: product })
+				})
+			window.scrollTo(0, 0)
+		}
+	}
+	addToCart(item) {
+		this.props.addToCart(item)
+		console.log(this.props)
+	}
 	render() {
 		let product = this.state.product
 		if (this.state.product === null) {
@@ -55,7 +76,12 @@ class Product extends Component {
 							<p>{product.itemDescription}</p>
 							<p>Current Price: {product.itemPrice}</p>
 							<p>Orders Made: {product.orderCount}</p>
-
+							<button
+								onClick={() => {
+									this.addToCart(product)
+								}}>
+								ADD TO CART
+							</button>
 							<div className='productCats'>
 								{product.categories.map(category => {
 									return <div className='productCat'>#{category}</div>
@@ -69,4 +95,15 @@ class Product extends Component {
 	}
 }
 
-export default Product
+function mapDispatchToProps(dispatch) {
+	return {
+		addToCart: item => dispatch(addToCart(item)),
+	}
+}
+function mapStateToProps(state) {
+	return {
+		cart: state.cart,
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product)
