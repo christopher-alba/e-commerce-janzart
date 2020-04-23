@@ -74,14 +74,8 @@ class ItemCards extends Component {
 									<div className='description'>{product.itemDescription}</div>
 								</div>
 								<div className='extra content'>
-									<div>
-										Rating
-										<Rating
-											icon='star'
-											defaultRating={5}
-											maxRating={5}
-											disabled
-										/>
+									<div class='ui likes'>
+										<i class='heart icon'></i> {product.favouritesCount} Likes
 									</div>
 								</div>
 								<div className='extra content categories'>
@@ -110,14 +104,8 @@ class ItemCards extends Component {
 								<div className='description'>{product.itemDescription}</div>
 							</div>
 							<div className='extra content'>
-								<div>
-									Rating
-									<Rating
-										icon='star'
-										defaultRating={5}
-										maxRating={5}
-										disabled
-									/>
+								<div class='ui likes'>
+									<i class='heart icon'></i> {product.favouritesCount} Likes
 								</div>
 							</div>
 							<div className='extra content categories'>

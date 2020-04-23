@@ -4,6 +4,7 @@ const cart = (state = { items: [] }, action) => {
     switch (action.type) {
         case 'ADD_TO_CART':
             if (state.items.find(itemObj => itemObj.item.id === action.item.id)) {
+                console.log(state.items.find(itemObj => itemObj.item.id === action.item.id))
                 let newItemQuantity = state.items.find(itemObj => itemObj.item.id === action.item.id).quantity
                 // console.log(newItemQuantity);
 
@@ -18,7 +19,7 @@ const cart = (state = { items: [] }, action) => {
                                 item: action.item, quantity: newItemQuantity
                             }
                         }
-                        return item
+                        return itemObj
                     })
                 }
             }

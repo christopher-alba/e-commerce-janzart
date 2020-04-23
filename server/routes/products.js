@@ -31,3 +31,25 @@ router.get('/product/:id', (req, res) => {
             res.json(item)
         })
 })
+
+router.post('/product/checkout', (req, res) => {
+    const stripe = require('stripe')('sk_test_AuJfCEy03BtZsDtoVvMi51yf00GdBPWklZ');
+
+    stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: [{
+            name: 'T-shirt',
+            description: 'Comfortable cotton t-shirt',
+            images: ['https://example.com/t-shirt.png'],
+            amount: 500,
+            currency: 'nzd',
+            quantity: 1,
+        }],
+        success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://example.com/cancel',
+    }).then(response => {
+        res.json(response)
+    })
+
+
+})

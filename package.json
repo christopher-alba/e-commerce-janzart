@@ -44,6 +44,7 @@
     "redux": "^4.0.5",
     "semantic-ui-react": "^0.88.2",
     "sqlite3": "^4.1.1",
+    "stripe": "^8.46.0",
     "superagent": "^5.2.2"
   },
   "devDependencies": {

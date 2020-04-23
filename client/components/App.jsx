@@ -117,7 +117,6 @@ class App extends React.Component {
 												)}
 											/>
 											<Route
-												exact
 												path='/cart'
 												render={props => <Cart style={style} />}
 											/>

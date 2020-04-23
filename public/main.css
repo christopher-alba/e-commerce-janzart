@@ -10,6 +10,7 @@ body {
 	padding-top: 10vh;
 	padding-bottom: 10vh;
 	overflow-x: hidden;
+	min-height: 50vh;
 }
 .titleStrong {
 	font-weight: 800;
@@ -47,7 +48,7 @@ ul li.thumb img.productImg {
 .home-featured-items a .ui.card {
 	width: 95% !important;
 	border: 1px solid rgba(0, 0, 0, 0.658);
-	border-radius: 0.5rem;
+	border-radius: 0px;
 }
 .home-featured-items a {
 	margin: 10px auto 0 auto;
@@ -77,18 +78,31 @@ ul li.thumb img.productImg {
 	height: 400px !important;
 	width: auto !important;
 }
-
+.page .ui.card > :first-child {
+	border-radius: 0 !important;
+}
 .ui.card .cardCategory {
 	padding: 10px;
+
 	width: fit-content;
-	margin: 0 10px 0 10px;
-	color: rgb(255, 195, 98);
-	background: black;
-	border-radius: 25px;
+	margin: 10px 10px 10px 10px;
+	color: rgb(41, 41, 41);
+
+	font-weight: 800;
+
+	/* border-radius: 15px; */
 }
+.ui.likes i {
+	color: rgb(248, 55, 55);
+}
+
 .ui.card .extra.content.categories {
 	display: flex;
 	flex-wrap: wrap;
+}
+.ui.card .ui.labeled.button:not(.icon) a {
+	min-width: 50px;
+	width: 100px;
 }
 /* card styles end */
 .app {
@@ -127,7 +141,7 @@ ul li.thumb img.productImg {
 	top: 0px;
 	left: 0px;
 	background-image: url(janzart-nav.jpg);
-	background-size: 100% 70%;
+	background-size: 100% 100%;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.493);
@@ -167,7 +181,7 @@ ul li.thumb img.productImg {
 }
 .nav-middle {
 	text-align: center;
-	background: rgb(224, 224, 224);
+	background: rgba(224, 224, 224, 0.733);
 }
 .nav-link {
 	flex-grow: 1;
@@ -183,11 +197,12 @@ a.nav-link {
 }
 a.nav-link:hover {
 	color: black;
-	border-bottom: 5px solid rgb(255, 219, 99);
+	border-bottom: 5px solid rgb(255, 183, 50);
 }
 .nav-links {
-	background: rgb(245, 245, 245);
+	background: rgba(245, 245, 245, 0.808);
 	padding-top: 10px;
+	height: 54px;
 }
 .nav-links-inner {
 	display: flex;
@@ -195,7 +210,7 @@ a.nav-link:hover {
 	margin: 0 auto 0 auto;
 }
 a.active {
-	border-bottom: 5px solid rgb(255, 219, 99);
+	border-bottom: 5px solid rgb(255, 183, 50);
 }
 .searchbar input[type='text']:focus {
 	outline: none;
@@ -236,17 +251,17 @@ a.active {
 	align-items: center;
 }
 .searchbar button[type='submit']:hover {
-	background: rgb(238, 238, 238);
+	background: rgba(238, 238, 238, 0.76);
 }
 .searchbar input[type='text'] {
 	padding-left: 50px;
-	background: rgb(245, 245, 245) !important;
+	background: rgba(245, 245, 245, 0.733) !important;
 }
 .searchbar button {
 	width: fit-content;
 	padding: 0 50px 0 50px;
 	border: none;
-	background: rgb(245, 245, 245);
+	background: rgba(245, 245, 245, 0.788);
 	cursor: pointer;
 	display: flex;
 }
@@ -424,7 +439,7 @@ a.active {
 /* FOOTER STYLES BEGIN */
 .footer {
 	height: fit-content;
-	background: rgb(230, 222, 182);
+	background: rgb(245, 228, 191);
 	overflow: hidden;
 	padding-bottom: 100px;
 }
@@ -580,12 +595,15 @@ h2:first-child {
 /* FEATURED STYLES END */
 /* LOGIN STYLES BEGIN */
 .login-page {
-	background: linear-gradient(270deg, #ffafbd, #ffc3a0, #9c00f3);
+	background: url(janzart1.jpg);
+	background-size: cover;
+	background-blend-mode: lighten;
+	/* background: linear-gradient(270deg, #ffafbd, #ffc3a0, #9c00f3);
 	background-size: 200% 200%;
 
 	-webkit-animation: AnimationName 15s ease infinite;
 	-moz-animation: AnimationName 15s ease infinite;
-	animation: AnimationName 15s ease infinite;
+	animation: AnimationName 15s ease infinite; */
 	height: 100vh;
 	width: 100vw;
 	position: relative;
@@ -628,7 +646,7 @@ h2:first-child {
 }
 .signInContainer {
 	padding: 5vw 0 5vw 0;
-	background: white;
+	background: rgba(255, 255, 255, 0.733);
 	width: 1000px;
 	max-width: 100%;
 	margin: 0 auto 0 auto;
@@ -723,12 +741,18 @@ h2:first-child {
 .productPage {
 	display: flex;
 }
+.ratings {
+	z-index: 2;
+	max-width: 50%;
+}
+
 .productPage .ratings {
 	position: relative;
 	top: -100px;
-	right: 50px;
+	right: -87%;
 	text-align: right;
-	z-index: 0;
+	z-index: 1;
+	width: fit-content;
 }
 @media (max-width: 500px) {
 	.productPage .ratings {
@@ -743,18 +767,106 @@ h2:first-child {
 }
 .productCats {
 	display: flex;
+	margin-bottom: 50px;
+	flex-wrap: wrap;
 }
 .productCat {
-	margin-right: 15px;
-	color: orange;
-	background: black;
-	border-radius: 0.5rem;
-	text-align: center;
 	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: fit-content;
+	margin-right: 20px;
+	margin-top: 20px;
+	color: rgb(41, 41, 41);
+	background: rgb(233, 207, 151);
+	font-weight: 800;
 }
 .productPage i.fas.fa-heart {
 	color: rgb(253, 70, 70);
 	font-size: 2rem;
 	margin: 10px;
 }
+.productTitle {
+	letter-spacing: 5px;
+	width: 700px;
+	max-width: 100%;
+	border-bottom: 1px solid lightgray;
+}
+.productPage span {
+	font-weight: 800;
+}
+.addCart {
+	background: rgb(255, 195, 99);
+	padding: 15px;
+	width: fit-content;
+	color: black;
+	margin: 30px 30px 30px 0;
+}
+.addCart:hover {
+	text-decoration: none;
+	color: black;
+	background: rgb(245, 210, 186);
+}
+.addCart span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.addCart span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.addCart:hover span {
+	padding-right: 25px;
+}
+
+.addCart:hover span:after {
+	opacity: 1;
+	right: 0;
+}
 /* PRODUCT PAGE ENDS */
+/* CART STYLES BEGIN */
+.thumbnail {
+	height: 100px;
+}
+button.ui.update {
+	background: rgb(255, 183, 50);
+	color: white;
+}
+button.ui.update:hover {
+	background: rgb(255, 102, 0);
+	color: white;
+}
+button.ui.checkout {
+	background: rgb(255, 151, 32);
+	color: white;
+	margin-top: 5px;
+}
+button.ui.checkout:hover {
+	background: rgb(253, 194, 0);
+	color: white;
+}
+a.ui.continue {
+	background: rgb(245, 228, 191);
+}
+a.ui.continue:hover {
+	background: rgb(248, 204, 108);
+}
+.cartName {
+	color: rgb(41, 86, 207);
+}
+.cartName:hover {
+	text-decoration: underline;
+}
+/* CART STYLES END */
+/* CHECKOUT STYLES BEGIN */
+.checkout {
+	font-weight: 800;
+}

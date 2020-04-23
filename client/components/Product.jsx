@@ -5,6 +5,7 @@ import { Container, Rating } from 'semantic-ui-react'
 import { Carousel } from 'react-responsive-carousel'
 import { connect } from 'react-redux'
 import { addToCart } from '../actions/index'
+import { Link } from 'react-router-dom'
 class Product extends Component {
 	state = {
 		product: null,
@@ -61,32 +62,39 @@ class Product extends Component {
 								})}
 							</Carousel>
 							<div className='ratings'>
-								<div>
-									{product.favouritesCount}
-									<i class='fas fa-heart'></i>
+								<div class='ui labeled button' tabindex='0'>
+									<div class='ui red button'>
+										<i class='heart icon'></i> Like
+									</div>
+									<a class='ui basic red left pointing label'>
+										{product.favouritesCount}
+									</a>
 								</div>
-								<p>
-									5
-									<Rating icon='star' defaultRating={5} maxRating={5} />{' '}
-								</p>
 							</div>
-						</div>
-						<div>
-							<h1>{product.itemName}</h1>
-							<p>{product.itemDescription}</p>
-							<p>Current Price: {product.itemPrice}</p>
-							<p>Orders Made: {product.orderCount}</p>
-							<button
-								onClick={() => {
-									this.addToCart(product)
-								}}>
-								ADD TO CART
-							</button>
 							<div className='productCats'>
 								{product.categories.map(category => {
 									return <div className='productCat'>#{category}</div>
 								})}
 							</div>
+						</div>
+						<div>
+							<h1 className='productTitle'>{product.itemName}</h1>
+
+							<p>{product.itemDescription}</p>
+							<p>
+								Current Price: <span>NZ${product.itemPrice}</span>
+							</p>
+							<p>Orders Made: {product.orderCount}</p>
+
+							<Link
+								to='/cart'
+								onClick={() => {
+									this.addToCart(product)
+								}}>
+								<div className='addCart'>
+									<span>ADD TO CART</span>
+								</div>
+							</Link>
 						</div>
 					</Container>
 				</animated.div>

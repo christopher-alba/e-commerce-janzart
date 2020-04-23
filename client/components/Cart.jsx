@@ -4,13 +4,25 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Container, Table } from 'semantic-ui-react'
 import { removeFromCart, updateQuantities } from '../actions/index'
+import Checkout from './Checkout'
+let counter = 0
 class Cart extends Component {
-	state = {}
 	state = {
 		cart: this.props.cart.items,
+		checkout: false,
 	}
 	removeItem(id) {
 		this.props.removeFromCart(id)
+		let oldCart = [...this.state.cart]
+		let newCart = oldCart.filter(itemObj => itemObj.item.id !== id)
+		this.setState(
+			{
+				cart: newCart,
+			},
+			() => {
+				console.log(this.state.cart)
+			}
+		)
 	}
 	handleQuantity(id, quantity) {
 		this.setState(
@@ -18,14 +30,14 @@ class Cart extends Component {
 				cart: this.state.cart.map(item => {
 					if (item.item.id === id) {
 						let newObj = { ...item }
-						newObj.quantity = quantity
+						newObj.quantity = Number(quantity)
 						return newObj
 					}
 					return item
 				}),
 			},
 			() => {
-				console.log(this.state)
+				// console.log(this.state)
 			}
 		)
 	}
@@ -35,14 +47,17 @@ class Cart extends Component {
 	}
 	render() {
 		return (
-			<animated.div style={{ ...this.props.style }}>
+			<animated.div style={{ ...this.props.style }} className='page'>
 				<Container>
 					<div className='cart'>
-						<Table celled>
+						<h1>Shopping Cart</h1>
+						<Table>
 							<Table.Header>
 								<Table.Row>
+									<Table.HeaderCell>Thumbnail</Table.HeaderCell>
 									<Table.HeaderCell>Name</Table.HeaderCell>
 									<Table.HeaderCell>Quantity</Table.HeaderCell>
+									<Table.HeaderCell>Price</Table.HeaderCell>
 									<Table.HeaderCell>Remove</Table.HeaderCell>
 								</Table.Row>
 							</Table.Header>
@@ -51,7 +66,19 @@ class Cart extends Component {
 									return (
 										<Table.Body>
 											<Table.Row>
-												<Table.Cell>{cartItem.item.itemName}</Table.Cell>
+												<Table.Cell>
+													<img
+														className='thumbnail'
+														src={`https://picsum.photos/${1500}/500?random=${counter++}`}
+													/>
+												</Table.Cell>
+												<Table.Cell>
+													<Link
+														className='cartName'
+														to={`/product/${cartItem.item.id}`}>
+														{cartItem.item.itemName}
+													</Link>
+												</Table.Cell>
 												<Table.Cell>
 													<input
 														class='update-input'
@@ -64,8 +91,10 @@ class Cart extends Component {
 														}}
 													/>
 												</Table.Cell>
+												<Table.Cell>NZ${cartItem.item.itemPrice}</Table.Cell>
 												<Table.Cell>
 													<button
+														className='ui button'
 														onClick={() => {
 															this.removeItem(cartItem.item.id)
 														}}>
@@ -78,13 +107,18 @@ class Cart extends Component {
 								})}
 						</Table>
 						<p class='actions'>
-							<Link to='/products'>Continue shopping</Link>
-							<button onClick={() => this.handleQuantities(this.state.cart)}>
+							<Link className='ui button continue' to='/products'>
+								Continue shopping
+							</Link>
+							<button
+								className='ui button update'
+								onClick={() => this.handleQuantities(this.state.cart)}>
 								Update
 							</button>
-							<button class='button-primary'>Checkout</button>
+							<button className='ui button checkout'>Checkout</button>
 						</p>
 					</div>
+					{<Checkout />}
 				</Container>
 			</animated.div>
 		)
