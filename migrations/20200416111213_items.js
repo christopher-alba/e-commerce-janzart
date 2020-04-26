@@ -5,7 +5,7 @@ exports.up = function (knex) {
         table.string('item_name').defaultsTo("Item Name")
         table.string('item_description').defaultsTo("Item Description")
         table.string('item_img_ids')
-        table.integer('item_price').defaultsTo(20)
+        table.decimal('item_price').defaultsTo(20)
         table.string('item_rating_ids')
         table.string('item_review_ids')
         table.integer('order_count').defaultsTo(0)
