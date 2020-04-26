@@ -88,7 +88,7 @@ export function startCheckout(items) {
         .then(res => {
             console.log(res);
 
-            return res.bodyn
+            return res.body
         })
 }
 function errorHandler(method, route) {
