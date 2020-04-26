@@ -1,7 +1,7 @@
 const express = require('express')
 const db = require('../db/db')
 const camelCase = require('camelcase-keys')
-const router = express()
+const router = express.Router()
 const stripe = require('stripe')('sk_test_AuJfCEy03BtZsDtoVvMi51yf00GdBPWklZ');
 
 module.exports = router
