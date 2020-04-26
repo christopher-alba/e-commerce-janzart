@@ -82,6 +82,15 @@ export function getProduct(id) {
         .then(product => product)
         .catch(errorHandler('GET', `/product/${id}`))
 }
+export function startCheckout(items) {
+    return request.post('/product/checkout')
+        .send({ items })
+        .then(res => {
+            console.log(res);
+
+            return res.bodyn
+        })
+}
 function errorHandler(method, route) {
     return (err) => {
         if (err.message === 'Not Found') {

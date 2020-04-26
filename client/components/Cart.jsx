@@ -5,7 +5,12 @@ import { Link } from 'react-router-dom'
 import { Container, Table } from 'semantic-ui-react'
 import { removeFromCart, updateQuantities } from '../actions/index'
 import Checkout from './Checkout'
+import { startCheckout } from '../api/index'
+import { loadStripe } from '@stripe/stripe-js'
+
+const stripePromise = loadStripe('pk_test_WzeFtVE3PB6qMqiu8NIuMyiN00dGLm0XQ5')
 let counter = 0
+
 class Cart extends Component {
 	state = {
 		cart: this.props.cart.items,
@@ -44,6 +49,16 @@ class Cart extends Component {
 
 	handleQuantities(cartItemQuantities) {
 		this.props.updateQuantities(cartItemQuantities)
+	}
+	handleClick = async event => {
+		// Call your backend to create the Checkout session.
+		const { id } = await startCheckout(this.props.cart.items)
+		const sessionId = id
+		// When the customer clicks on the button, redirect them to Checkout.
+		const stripe = await stripePromise
+		const { error } = await stripe.redirectToCheckout({
+			sessionId,
+		})
 	}
 	render() {
 		return (
@@ -115,7 +130,13 @@ class Cart extends Component {
 								onClick={() => this.handleQuantities(this.state.cart)}>
 								Update
 							</button>
-							<button className='ui button checkout'>Checkout</button>
+							<button
+								className='ui button checkout'
+								onClick={evt => {
+									this.handleClick(evt)
+								}}>
+								Checkout
+							</button>
 						</p>
 					</div>
 					{<Checkout />}

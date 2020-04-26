@@ -2,6 +2,7 @@ const express = require('express')
 const db = require('../db/db')
 const camelCase = require('camelcase-keys')
 const router = express()
+const stripe = require('stripe')('sk_test_AuJfCEy03BtZsDtoVvMi51yf00GdBPWklZ');
 
 module.exports = router
 
@@ -33,7 +34,9 @@ router.get('/product/:id', (req, res) => {
 })
 
 router.post('/product/checkout', (req, res) => {
-    const stripe = require('stripe')('sk_test_AuJfCEy03BtZsDtoVvMi51yf00GdBPWklZ');
+
+    console.log(req.body);
+
 
     stripe.checkout.sessions.create({
         payment_method_types: ['card'],
@@ -45,9 +48,10 @@ router.post('/product/checkout', (req, res) => {
             currency: 'nzd',
             quantity: 1,
         }],
-        success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        success_url: `https://example.com/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: 'https://example.com/cancel',
     }).then(response => {
+
         res.json(response)
     })
 
