@@ -25,187 +25,190 @@ import New from './New'
 import { animated, Transition } from 'react-spring/renderprops'
 import { Spring, config } from 'react-spring/renderprops'
 import VisibilitySensor from 'react-visibility-sensor'
-class App extends React.Component {
-	render() {
-		return (
-			<>
-				<Route
-					path='/'
-					render={props => {
-						if (
-							props.location.pathname !== '/login' &&
-							props.location.pathname !== '/signup'
-						) {
-							return (
-								<VisibilitySensor partialVisibility={true}>
-									{({ isVisible }) => (
-										<Spring
-											delay={0}
-											to={{ opacity: isVisible ? 1 : 0 }}
-											config={{ duration: 1000 }}>
-											{({ opacity }) => (
-												<Navbar
-													animation={opacity}
-													pathName={props.location.pathname}
-												/>
-											)}
-										</Spring>
-									)}
-								</VisibilitySensor>
-							)
-						}
-					}}
-				/>
-				<Route
-					exact
-					render={({ location, ...rest }) => {
-						return (
-							<>
-								<Transition
-									native
-									items={location}
-									keys={location.pathname.split('/')[1]}
-									from={{
-										position: 'fixed',
-										transform: 'translateY(1000px)',
-										opacity: 0,
-									}}
-									enter={{
-										position: 'static',
-										transform: 'translateY(0px)',
-										opacity: 1,
-									}}
-									leave={{
-										position: 'static',
-										transform: 'translateY(-1000px)',
-										opacity: 0,
-									}}
-									config={{ duration: 1000 }}>
-									{(loc, state) => style => (
-										<Switch location={state === 'update' ? location : loc}>
-											<Route
-												exact
-												path='/'
-												render={props => <Home style={style} />}
-											/>
-											<Route
-												exact
-												path='/products'
-												render={props => (
-													<Products style={style} renderProps={props} />
-												)}
-											/>
-											<Route
-												exact
-												path='/new'
-												render={props => (
-													<New style={style} renderProps={props} />
-												)}
-											/>
-											<Route
-												exact
-												path='/product/:id'
-												render={props => (
-													<Product style={style} renderProps={props} />
-												)}
-											/>
-											<Route
-												exact
-												path='/products/:id'
-												render={props => (
-													<Products style={style} renderProps={props} />
-												)}
-											/>
-											<Route
-												path='/cart'
-												render={props => <Cart style={style} />}
-											/>
-											<Route
-												exact
-												path='/profile'
-												render={props => <Profile style={style} />}
-											/>
-											<Route
-												exact
-												path='/about'
-												render={props => <About style={style} />}
-											/>
-											<Route
-												exact
-												path='/custom'
-												render={props => <Custom style={style} />}
-											/>
-											<Route
-												exact
-												path='/careers'
-												render={props => <Careers style={style} />}
-											/>
-										</Switch>
-									)}
-								</Transition>
-								<Transition
-									native
-									items={location}
-									keys={location.pathname.split('/')[1]}
-									from={{
-										position: 'fixed',
-										opacity: 0,
-									}}
-									enter={{
-										position: 'static',
-										opacity: 1,
-									}}
-									leave={{
-										position: 'fixed',
-										opacity: 0,
-									}}
-									config={{ duration: 2000 }}>
-									{(loc, state) => style => (
-										<Switch location={state === 'update' ? location : loc}>
-											<Route
-												exact
-												path='/login'
-												render={props => <Login style={style} />}
-											/>
-											<Route
-												exact
-												path='/signup'
-												render={props => <SignUp style={style} />}
-											/>
-										</Switch>
-									)}
-								</Transition>
-							</>
-						)
-					}}
-				/>
-				<Route
-					path='/'
-					render={props => {
-						if (
-							props.location.pathname !== '/login' &&
-							props.location.pathname !== '/signup'
-						) {
-							return (
-								<VisibilitySensor partialVisibility={true} minTopValue={50}>
-									{({ isVisible }) => (
-										<Spring delay={0} to={{ opacity: isVisible ? 1 : 0 }}>
-											{({ opacity }) => (
-												<Footer
-													animation={opacity}
-													pathName={props.location.pathname}
-												/>
-											)}
-										</Spring>
-									)}
-								</VisibilitySensor>
-							)
-						}
-					}}
-				/>
-			</>
-		)
-	}
-}
+import { useAuth0 } from '../react-auth0-spa'
 
-export default App
+export default function App() {
+	const { loading } = useAuth0()
+
+	if (loading) {
+		return <div>Loading...</div>
+	}
+	return (
+		<>
+			<Route
+				path='/'
+				render={props => {
+					if (
+						props.location.pathname !== '/login' &&
+						props.location.pathname !== '/signup'
+					) {
+						return (
+							<VisibilitySensor partialVisibility={true}>
+								{({ isVisible }) => (
+									<Spring
+										delay={0}
+										to={{ opacity: isVisible ? 1 : 0 }}
+										config={{ duration: 1000 }}>
+										{({ opacity }) => (
+											<Navbar
+												animation={opacity}
+												pathName={props.location.pathname}
+											/>
+										)}
+									</Spring>
+								)}
+							</VisibilitySensor>
+						)
+					}
+				}}
+			/>
+			<Route
+				exact
+				render={({ location, ...rest }) => {
+					return (
+						<>
+							<Transition
+								native
+								items={location}
+								keys={location.pathname.split('/')[1]}
+								from={{
+									position: 'fixed',
+									transform: 'translateY(1000px)',
+									opacity: 0,
+								}}
+								enter={{
+									position: 'static',
+									transform: 'translateY(0px)',
+									opacity: 1,
+								}}
+								leave={{
+									position: 'static',
+									transform: 'translateY(-1000px)',
+									opacity: 0,
+								}}
+								config={{ duration: 1000 }}>
+								{(loc, state) => style => (
+									<Switch location={state === 'update' ? location : loc}>
+										<Route
+											exact
+											path='/'
+											render={props => <Home style={style} />}
+										/>
+										<Route
+											exact
+											path='/products'
+											render={props => (
+												<Products style={style} renderProps={props} />
+											)}
+										/>
+										<Route
+											exact
+											path='/new'
+											render={props => (
+												<New style={style} renderProps={props} />
+											)}
+										/>
+										<Route
+											exact
+											path='/product/:id'
+											render={props => (
+												<Product style={style} renderProps={props} />
+											)}
+										/>
+										<Route
+											exact
+											path='/products/:id'
+											render={props => (
+												<Products style={style} renderProps={props} />
+											)}
+										/>
+										<Route
+											path='/cart'
+											render={props => <Cart style={style} />}
+										/>
+										<Route
+											exact
+											path='/profile'
+											render={props => <Profile style={style} />}
+										/>
+										<Route
+											exact
+											path='/about'
+											render={props => <About style={style} />}
+										/>
+										<Route
+											exact
+											path='/custom'
+											render={props => <Custom style={style} />}
+										/>
+										<Route
+											exact
+											path='/careers'
+											render={props => <Careers style={style} />}
+										/>
+									</Switch>
+								)}
+							</Transition>
+							<Transition
+								native
+								items={location}
+								keys={location.pathname.split('/')[1]}
+								from={{
+									position: 'fixed',
+									opacity: 0,
+								}}
+								enter={{
+									position: 'static',
+									opacity: 1,
+								}}
+								leave={{
+									position: 'fixed',
+									opacity: 0,
+								}}
+								config={{ duration: 2000 }}>
+								{(loc, state) => style => (
+									<Switch location={state === 'update' ? location : loc}>
+										<Route
+											exact
+											path='/login'
+											render={props => <Login style={style} />}
+										/>
+										<Route
+											exact
+											path='/signup'
+											render={props => <SignUp style={style} />}
+										/>
+									</Switch>
+								)}
+							</Transition>
+						</>
+					)
+				}}
+			/>
+			<Route
+				path='/'
+				render={props => {
+					if (
+						props.location.pathname !== '/login' &&
+						props.location.pathname !== '/signup'
+					) {
+						return (
+							<VisibilitySensor partialVisibility={true} minTopValue={50}>
+								{({ isVisible }) => (
+									<Spring delay={0} to={{ opacity: isVisible ? 1 : 0 }}>
+										{({ opacity }) => (
+											<Footer
+												animation={opacity}
+												pathName={props.location.pathname}
+											/>
+										)}
+									</Spring>
+								)}
+							</VisibilitySensor>
+						)
+					}
+				}}
+			/>
+		</>
+	)
+}

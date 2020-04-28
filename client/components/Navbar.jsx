@@ -3,15 +3,30 @@ import { Responsive, Segment, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Transition, animated } from 'react-spring/renderprops'
 import CatDropdown from './CatDropdown'
+// authentication
+import { useAuth0 } from '../react-auth0-spa'
+
 let searchQuery = ''
 let catFilter = []
+
+// export default function Navbar () {
+
+// }
+
 class Navbar extends Component {
-	state = {
-		menuDisplayed: false,
-		searchQuery: '',
-		currentPage: '',
-		catFilter: [],
-		catDisplayed: false,
+	constructor(props) {
+		super(props)
+		this.state = {
+			menuDisplayed: false,
+			searchQuery: '',
+			currentPage: '',
+			catFilter: [],
+			catDisplayed: false,
+		}
+		const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
+		this.isAuthenticated = isAuthenticated
+		this.loginWithRedirect = loginWithRedirect
+		this.logout = logout
 	}
 
 	handleClick = () => {
@@ -60,9 +75,18 @@ class Navbar extends Component {
 								<Link className='login' to='/cart'>
 									<i className='fas fa-shopping-cart nav-cart'></i>
 								</Link>
-								<Link to='/login'>
-									<div className='login'>LOGIN</div>
-								</Link>
+								{!isAuthenticated && (
+									<button
+										className='login'
+										onClick={() => this.loginWithRedirect({})}>
+										Log in
+									</button>
+								)}
+								{isAuthenticated && (
+									<button className='login' onClick={() => this.logout()}>
+										Log out
+									</button>
+								)}
 								<Link className='login' to='/signup'>
 									<div className='signup'>SIGN UP</div>
 								</Link>
