@@ -15,7 +15,7 @@ import SignUp from './SignUp'
 import Cart from './Cart'
 import Profile from './Profile'
 import Footer from './Footer'
-import { searchQuery } from './Navbar'
+import Navbar, { searchQuery } from './Navbar'
 
 import About from './About'
 import Careers from './Careers'
