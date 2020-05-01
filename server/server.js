@@ -13,7 +13,7 @@ const config = {
   required: false,
   auth0Logout: true,
   appSession: {
-    secret: process.env.CLIENT_SECRET
+    secret: 'JTHdnN_HIxdeQwpiaY0JW5tvxpJHAmWp5nS_AvID4hL_Gd8FNH4ZEXLCupnCz6DC'
   },
   baseURL: 'https://janzart.herokuapp.com',
   clientID: 'KCH4PtB5clG7BrkK48hetg6teztFGGmo',
