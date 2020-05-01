@@ -61,6 +61,8 @@ export const Auth0Provider = ({
     setLoading(true)
     await auth0Client.handleRedirectCallback()
     const user = await auth0Client.getUser()
+    console.log("testing get user");
+    
     setLoading(false)
     setIsAuthenticated(true)
     setUser(user)
