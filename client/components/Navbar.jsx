@@ -16,7 +16,15 @@ export default function Navbar(props) {
 	const [currentPage, setCurrentPage] = useState('')
 	const [catFilter, setCatFilter] = useState([])
 	const [catDisplayed, setCatDisplayed] = useState(false)
-	const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
+	// console.log(useAuth0())
+
+	const {
+		isAuthenticated,
+		loginWithRedirect,
+		logout,
+		user,
+		loading,
+	} = useAuth0()
 	// Similar to componentDidMount and componentDidUpdate:
 	useEffect(() => {
 		//update the current page/location of the user
@@ -42,6 +50,7 @@ export default function Navbar(props) {
 	function handleLinkClick(evt) {
 		setCurrentPage(evt.target.name)
 	}
+
 	return (
 		<div className='responsiveNav' style={{ opacity: props.animation }}>
 			<Responsive as={Segment} minWidth={1000}>
@@ -64,9 +73,11 @@ export default function Navbar(props) {
 									Log out
 								</button>
 							)}
-							<Link className='login' to='/signup'>
-								<div className='signup'>SIGN UP</div>
-							</Link>
+							{isAuthenticated && (
+								<Link className='login' to='/profile'>
+									Profile
+								</Link>
+							)}
 						</div>
 					</div>
 				</div>

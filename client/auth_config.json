@@ -1,4 +1,5 @@
 {
 	"domain": "dev-p2szhd1r.au.auth0.com",
-	"clientId": "KCH4PtB5clG7BrkK48hetg6teztFGGmo"
+	"clientId": "KCH4PtB5clG7BrkK48hetg6teztFGGmo",
+	"audience": "https://dev-p2szhd1r.au.auth0.com/api/v2/"
 }

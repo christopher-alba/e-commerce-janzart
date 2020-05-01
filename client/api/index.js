@@ -91,6 +91,16 @@ export function startCheckout(items) {
             return res.body
         })
 }
+export function getToken() {
+    return request.get('/api/v1/auth/external')
+        .then(res => {
+            console.log(JSON.parse(res.text));
+
+            return JSON.parse(res.text)
+
+        })
+
+}
 function errorHandler(method, route) {
     return (err) => {
         if (err.message === 'Not Found') {
