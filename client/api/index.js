@@ -84,6 +84,7 @@ export function getToken () {
       return JSON.parse(res.text)
     })
 }
+
 function errorHandler (method, route) {
   return (err) => {
     if (err.message === 'Not Found') {
