@@ -6,9 +6,9 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducers from './reducers/index'
 // import * as serviceWorker from "./serviceWorker";
-import { Auth0Provider } from "./react-auth0-spa";
-import config from "./auth_config.json";
-import history from "./api/utils/history";
+import { Auth0Provider } from './react-auth0-spa'
+import config from './auth_config.json'
+import history from './api/utils/history'
 
 // Auth0 function to redirect user to right place after login
 const onRedirectCallback = appState => {
@@ -16,8 +16,8 @@ const onRedirectCallback = appState => {
     appState && appState.targetUrl
       ? appState.targetUrl
       : window.location.pathname
-  );
-};
+  )
+}
 
 const store = createStore(reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -40,11 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </Provider>
     </Auth0Provider>,
 
-
-
-
-
     document.getElementById('app')
   )
 })
-

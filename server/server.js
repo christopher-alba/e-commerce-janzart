@@ -16,7 +16,7 @@ const config = {
     secret: 'a long, randomly-generated string stored in env'
   },
   baseURL: 'https://janzart.herokuapp.com',
-  clientID: 'RVNjMzUQi8bnzlPIN2iYP7x3bzWK6nte',
+  clientID: 'KCH4PtB5clG7BrkK48hetg6teztFGGmo',
   issuerBaseURL: 'https://dev-p2szhd1r.au.auth0.com'
 }
 
