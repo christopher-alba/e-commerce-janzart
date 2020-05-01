@@ -30,8 +30,4 @@ server.use(express.json())
 server.use(express.static(path.resolve('public')))
 server.use(products)
 server.use('/api/v1/auth', require('./routes/auth'))
-server.get('/login', (req, res) => {
-
-})
-
 module.exports = server
