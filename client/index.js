@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       client_id={config.clientId}
       redirect_uri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
-      audience={config.audience}
+      // audience={config.audience}
     >
       <Provider store={store}>
         <Router>
