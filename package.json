@@ -68,6 +68,7 @@
 		"react-spring": "^8.0.27",
 		"react-visibility-sensor": "^5.1.1",
 		"redux": "^4.0.5",
+		"redux-thunk": "^2.3.0",
 		"request": "^2.88.2",
 		"semantic-ui-react": "^0.88.2",
 		"sqlite3": "^4.1.1",

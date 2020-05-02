@@ -1,11 +1,8 @@
+/* eslint-disable react/display-name */
 import React from 'react'
 import {
   Route,
-  withRouter,
-  Switch,
-  Link,
-  NavLink,
-  Redirect
+  Switch
 } from 'react-router-dom'
 import Home from './Home'
 import Products from './Products'
@@ -15,15 +12,15 @@ import SignUp from './SignUp'
 import Cart from './Cart'
 import Profile from './Profile'
 import Footer from './Footer'
-import Navbar, { searchQuery } from './Navbar'
+import Navbar from './Navbar'
 
 import About from './About'
 import Careers from './Careers'
 import Custom from './Custom'
-import Demo from './Demo'
+
 import New from './New'
 import PrivateRoute from './PrivateRoute'
-import { animated, Transition, Spring, config } from 'react-spring/renderprops'
+import { Transition, Spring } from 'react-spring/renderprops'
 
 import VisibilitySensor from 'react-visibility-sensor'
 import { useAuth0 } from '../react-auth0-spa'
@@ -41,7 +38,7 @@ export default function App () {
   render={props => {
     if (
       props.location.pathname !== '/login' &&
-props.location.pathname !== '/signup'
+      props.location.pathname !== '/signup'
     ) {
       return (
         <VisibilitySensor partialVisibility={true}>
@@ -198,7 +195,7 @@ props.location.pathname !== '/signup'
   render={props => {
     if (
       props.location.pathname !== '/login' &&
-props.location.pathname !== '/signup'
+      props.location.pathname !== '/signup'
     ) {
       return (
         <VisibilitySensor partialVisibility={true} minTopValue={50}>

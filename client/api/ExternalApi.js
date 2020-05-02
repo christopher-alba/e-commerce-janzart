@@ -23,17 +23,6 @@ const ExternalApi = (props) => {
               setApiMessage(responseData.body)
             })
         })
-
-      // const response = await get(`https://dev-p2szhd1r.au.auth0.com/api/v2/users/${props.id}`, {
-      //     headers: {
-      //         Authorization: `Bearer ${token}`
-      //     }
-      // });
-
-      // const responseData = await response.json();
-
-      // setShowResult(true);
-      // setApiMessage(responseData);c
     } catch (error) {
       console.error(error)
     }

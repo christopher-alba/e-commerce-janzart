@@ -19,11 +19,11 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: __dirname + '/migrations',
+      directory: __dirname + '/migrations'
     },
     seeds: {
-      directory: __dirname + '/seeds',
-    },
+      directory: __dirname + '/seeds'
+    }
   },
 
   production: {
@@ -35,11 +35,11 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: __dirname + '/migrations',
+      directory: __dirname + '/migrations'
     },
     seeds: {
-      directory: __dirname + '/seeds',
-    },
+      directory: __dirname + '/seeds'
+    }
   }
 
-};
+}

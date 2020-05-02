@@ -10,7 +10,7 @@ let searchQuery = ''
 let catFilter = []
 
 export default function Navbar (props) {
-// states
+  // states
   const [menuDisplayed, setMenuDisplayed] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [currentPage, setCurrentPage] = useState('')
@@ -65,17 +65,17 @@ export default function Navbar (props) {
               </Link>
               {!isAuthenticated && (
                 <button className='login' onClick={() => loginWithRedirect({})}>
-    Log in
+            Log in
                 </button>
               )}
               {isAuthenticated && (
                 <button className='login' onClick={() => logout()}>
-    Log out
+            Log out
                 </button>
               )}
               {isAuthenticated && (
                 <Link className='login' to='/profile'>
-    Profile
+            Profile
                 </Link>
               )}
             </div>
@@ -89,7 +89,7 @@ export default function Navbar (props) {
                 onMouseDown={handleLinkClick}
                 className={`nav-link ${currentPage === '' ? 'active' : ''}`}
                 to='/'>
-  HOME
+            HOME
               </Link>
 
               <Link
@@ -97,7 +97,7 @@ export default function Navbar (props) {
                 onMouseDown={handleLinkClick}
                 className={`nav-link ${currentPage === 'new' ? 'active' : ''}`}
                 to='/new'>
-  NEW
+            NEW
               </Link>
               <Link
                 name='products'
@@ -106,7 +106,7 @@ export default function Navbar (props) {
                   currentPage === 'products' ? 'active' : ''
                 }`}
                 to='/products'>
-  PRODUCTS
+            PRODUCTS
               </Link>
               <Link
                 name='custom'
@@ -115,7 +115,7 @@ export default function Navbar (props) {
                   currentPage === 'custom' ? 'active' : ''
                 }`}
                 to='/custom'>
-  CUSTOM
+            CUSTOM
               </Link>
               <Link
                 name='about'
@@ -124,7 +124,7 @@ export default function Navbar (props) {
                   currentPage === 'about' ? 'active' : ''
                 }`}
                 to='/about'>
-  ABOUT
+            ABOUT
               </Link>
               <Link
                 name='careers'
@@ -133,7 +133,7 @@ export default function Navbar (props) {
                   currentPage === 'careers' ? 'active' : ''
                 }`}
                 to='/careers'>
-  CONTACT
+            CONTACT
               </Link>
               <Link
                 name='careers'
@@ -142,14 +142,14 @@ export default function Navbar (props) {
                   currentPage === 'careers' ? 'active' : ''
                 }`}
                 to='/careers'>
-  CAREERS
+            CAREERS
               </Link>
             </div>
           </div>
           <div>
             <form className='searchbar'>
               <button onClick={handleCategories}>
-  FILTERS <i className='far fa-caret-square-down'></i>
+            FILTERS <i className='far fa-caret-square-down'></i>
               </button>
               <input
                 type='text'
@@ -178,7 +178,7 @@ export default function Navbar (props) {
               }}>
               {show =>
                 show &&
-  (props => <CatDropdown onChange={updateFilter} style={props} />)
+            (props => <CatDropdown onChange={updateFilter} style={props} />)
               }
             </Transition>
           </div>
@@ -195,7 +195,7 @@ export default function Navbar (props) {
 
           <form className='searchbar'>
             <button onClick={handleCategories}>
-FILTERS <i className='far fa-caret-square-down'></i>
+            FILTERS <i className='far fa-caret-square-down'></i>
             </button>
             <input type='text' onChange={updateSearch} />
             <Link to={`/products/${searchQuery}`}>
@@ -220,7 +220,7 @@ FILTERS <i className='far fa-caret-square-down'></i>
             }}>
             {show =>
               show &&
-(props => <CatDropdown onChange={updateFilter} style={props} />)
+            (props => <CatDropdown onChange={updateFilter} style={props} />)
             }
           </Transition>
         </div>
@@ -505,88 +505,88 @@ FILTERS <i className='far fa-caret-square-down'></i>
 // }
 
 class Menu extends Component {
-state = {
-  currentPage: ''
-}
+            state = {
+              currentPage: ''
+            }
 
-handleLinkClick = evt => {
-  this.setState({
-    currentPage: evt.target.name
-  })
+            handleLinkClick = evt => {
+              this.setState({
+                currentPage: evt.target.name
+              })
 
-  console.log(evt.target)
-}
-render () {
-  return (
-    <animated.div style={this.props.style} className='nav-menu'>
-      <div className='mobile-nav-links'>
-        <Link
-          name=''
-          onMouseDown={this.handleLinkClick}
-          className={`nav-link ${
-            this.state.currentPage === '' ? 'active' : ''
-          }`}
-          to='/'>
-HOME
-        </Link>
+              console.log(evt.target)
+            }
+            render () {
+              return (
+                <animated.div style={this.props.style} className='nav-menu'>
+                  <div className='mobile-nav-links'>
+                    <Link
+                      name=''
+                      onMouseDown={this.handleLinkClick}
+                      className={`nav-link ${
+                        this.state.currentPage === '' ? 'active' : ''
+                      }`}
+                      to='/'>
+            HOME
+                    </Link>
 
-        <Link
-          name='new'
-          onMouseDown={this.handleLinkClick}
-          className={`nav-link ${
-            this.state.currentPage === 'new' ? 'active' : ''
-          }`}
-          to='/new'>
-NEW
-        </Link>
-        <Link
-          name='products'
-          onMouseDown={this.handleLinkClick}
-          className={`nav-link ${
-            this.state.currentPage === 'products' ? 'active' : ''
-          }`}
-          to='/products'>
-PRODUCTS
-        </Link>
-        <Link
-          name='custom'
-          onMouseDown={this.handleLinkClick}
-          className={`nav-link ${
-            this.state.currentPage === 'custom' ? 'active' : ''
-          }`}
-          to='/custom'>
-CUSTOM
-        </Link>
-        <Link
-          name='about'
-          onMouseDown={this.handleLinkClick}
-          className={`nav-link ${
-            this.state.currentPage === 'about' ? 'active' : ''
-          }`}
-          to='/about'>
-ABOUT
-        </Link>
-        <Link
-          name='careers'
-          onMouseDown={this.handleLinkClick}
-          className={`nav-link ${
-            this.state.currentPage === 'careers' ? 'active' : ''
-          }`}
-          to='/careers'>
-CAREERS
-        </Link>
-      </div>
-      <div className='mobile-cart'>
-        <div className='nav-cart'>
-          <i className='fas fa-shopping-cart'></i>
-        </div>
-        <Link to='/login'>
-          <div className='login'>LOGIN</div>
-        </Link>
-      </div>
-    </animated.div>
-  )
-}
+                    <Link
+                      name='new'
+                      onMouseDown={this.handleLinkClick}
+                      className={`nav-link ${
+                        this.state.currentPage === 'new' ? 'active' : ''
+                      }`}
+                      to='/new'>
+            NEW
+                    </Link>
+                    <Link
+                      name='products'
+                      onMouseDown={this.handleLinkClick}
+                      className={`nav-link ${
+                        this.state.currentPage === 'products' ? 'active' : ''
+                      }`}
+                      to='/products'>
+            PRODUCTS
+                    </Link>
+                    <Link
+                      name='custom'
+                      onMouseDown={this.handleLinkClick}
+                      className={`nav-link ${
+                        this.state.currentPage === 'custom' ? 'active' : ''
+                      }`}
+                      to='/custom'>
+            CUSTOM
+                    </Link>
+                    <Link
+                      name='about'
+                      onMouseDown={this.handleLinkClick}
+                      className={`nav-link ${
+                        this.state.currentPage === 'about' ? 'active' : ''
+                      }`}
+                      to='/about'>
+            ABOUT
+                    </Link>
+                    <Link
+                      name='careers'
+                      onMouseDown={this.handleLinkClick}
+                      className={`nav-link ${
+                        this.state.currentPage === 'careers' ? 'active' : ''
+                      }`}
+                      to='/careers'>
+            CAREERS
+                    </Link>
+                  </div>
+                  <div className='mobile-cart'>
+                    <div className='nav-cart'>
+                      <i className='fas fa-shopping-cart'></i>
+                    </div>
+                    <Link to='/login'>
+                      <div className='login'>LOGIN</div>
+                    </Link>
+                  </div>
+                </animated.div>
+              )
+            }
 }
 
 export { searchQuery, catFilter }
