@@ -58,7 +58,7 @@ class ItemCards extends Component {
 	}
 	render() {
 		return this.props.carousel ? (
-			<Carousel autoPlay={true} infiniteLoop={true}>
+			<Carousel autoPlay={true} infiniteLoop={true} showThumbs = {this.props.showThumbs}>
 				{this.state.products.map(product => {
 					return (
 						<Link key={product.id} to={`/product/${product.id}`}>
