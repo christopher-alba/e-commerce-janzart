@@ -62,7 +62,7 @@ class Product extends Component {
 								})}
 							</Carousel>
 							<div className='ratings'>
-								<div class='ui labeled button' tabindex='0'>
+								<div class='ui labeled button' tabIndex='0'>
 									<div class='ui red button'>
 										<i class='heart icon'></i> Like
 									</div>
