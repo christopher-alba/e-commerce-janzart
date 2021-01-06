@@ -47,7 +47,7 @@
 		"@babel/preset-react": "^7.9.4",
 		"@babel/runtime": "^7.9.2",
 		"@stripe/stripe-js": "^1.4.0",
-		"axios": "^0.19.2",
+		"axios": "^0.21.1",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-loader": "^8.1.0",
 		"camelcase-keys": "^6.2.2",
