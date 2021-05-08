@@ -1,0 +1,259 @@
+[33mcommit 6975fb6332f00e71b9034b68ac8ac4186b2854df[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31mheroku/master[m[33m)[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat May 2 21:42:22 2020 +1200
+
+    fix navbar filters
+
+[33mcommit 6582da58340cd400d1d1e2062b82a04eaf6d9e35[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat May 2 15:34:38 2020 +1200
+
+    convert update Quantities to use Thunk
+
+[33mcommit d1575d0a168074cc44e58031d70d8e09ec97d9eb[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat May 2 10:21:02 2020 +1200
+
+    add a console log for testing
+
+[33mcommit 5730312236e5d5b48718cd1b75dfcbdb6a8f13f0[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat May 2 10:15:48 2020 +1200
+
+    try client secret
+
+[33mcommit 4590575bac1eb821f8a205d5bca8fe0445590c95[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat May 2 10:07:40 2020 +1200
+
+    try using client secret in .env
+
+[33mcommit 7b46c6b734592ae88cf6a095495d1cfbff4fe4bc[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat May 2 09:58:15 2020 +1200
+
+    try remove audience inside index.js
+
+[33mcommit 87a2a6ce2b621da12947e6904d4e2317c793ddf6[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat May 2 09:54:45 2020 +1200
+
+    update client ID in server.js to correct one
+
+[33mcommit 921fcf8e3a60082f79a43590df492d25be266776[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 23:51:58 2020 +1200
+
+    add loading to app.jsx
+
+[33mcommit 6152f0c8096fba04d6da0b83907061c737dd7454[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 23:33:40 2020 +1200
+
+    remove loading in App.jsx
+
+[33mcommit 99daf1aba121c3969d6dd6c4c052943f9f5ccce2[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 23:24:51 2020 +1200
+
+    remove overwriting login route
+
+[33mcommit 89d4092bf99030901083a63ac6e2b6422885c4bb[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 23:16:02 2020 +1200
+
+    setup login routes through server in server.js using auth0 package
+
+[33mcommit 69f90959fd5dad40d3c1853d0eacecde20001158[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 22:02:48 2020 +1200
+
+    update typo in App.jsx from navbar
+
+[33mcommit 53b90337998710d5c81ef8f00482363f2fdeef82[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 21:59:11 2020 +1200
+
+    update environment variable in db.js
+
+[33mcommit fac7c3ac65da1c9bda38ed580ff6dc559b836f68[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 21:57:20 2020 +1200
+
+    fix typo in app.jsx
+
+[33mcommit 8f4a50718d08c942bd1223811c7d38e2b1e6058d[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 21:50:49 2020 +1200
+
+    connect and use auth0 management api
+
+[33mcommit 28993de83a2a6933d4f628f1c65cbac7f3e72b01[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Fri May 1 21:49:45 2020 +1200
+
+    update heroku master
+
+[33mcommit 323fe22a97548e0a5199db8212994a94826b27b9[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Tue Apr 28 18:26:35 2020 +1200
+
+    replace navbar and app class components with functional components using react hooks
+
+[33mcommit 34cef02929f25a636200b26108c320000b64fe4b[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Tue Apr 28 16:12:10 2020 +1200
+
+    begin work on converting to react hooks
+
+[33mcommit 7ba928ed9279e53fe1fcd564b1a163ee9710ba0a[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Tue Apr 28 15:03:28 2020 +1200
+
+    populate react-auth0-spa.js
+
+[33mcommit 1d322e433de4ec5a5e3239b74c1c9247f9b80a21[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Tue Apr 28 15:00:28 2020 +1200
+
+    begin initial setup for Auth0 authentication
+
+[33mcommit 60dffab34bcb31f5157a2b75bc7fc327e1d4d87b[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 20:01:50 2020 +1200
+
+    fix typo on line 91 index.js api
+
+[33mcommit dbd8b414240cedb94f10a281469427b21580fa8c[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 19:32:37 2020 +1200
+
+    change environment to production in db.js from a variable to fixed
+
+[33mcommit 86ba06db06d5aac996597e7016e739619541e9be[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 19:21:42 2020 +1200
+
+    fix value of router in products.js
+
+[33mcommit fd3d67c75806fcd7332d69f5030ed45d60f6bcf0[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 19:09:31 2020 +1200
+
+    update knex.js config
+
+[33mcommit ba3d8415a1d9ec74bb488d4890f582208e2ed09a[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 19:05:41 2020 +1200
+
+    fix knex config for production
+
+[33mcommit 9d159164bead039b6990c576ff694bbeec5ffb4e[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 18:54:22 2020 +1200
+
+    fix wrong link to knexfile.js in db.js
+
+[33mcommit 0849c44978fb03f1e68e71d2c7b3622c9457cce7[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 18:48:24 2020 +1200
+
+    change integer in migrations to decimal for price
+
+[33mcommit bd301def97d9153dd80d770b1fa5e0a3ddc263c0[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 18:43:25 2020 +1200
+
+    fix migrations for deployment
+
+[33mcommit 75e2bc027e3162bb5a61965999c86b79da311ef8[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 18:40:20 2020 +1200
+
+    set up postgreSQL in knexfile and for heroku app
+
+[33mcommit 7f218ba2761bd43aa30e43a958ed77aade5e0b8b[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 18:10:44 2020 +1200
+
+    add postgres package as a dependency
+
+[33mcommit 80355d89ad0f8c048818335c2b8a94edd4460b6a[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 18:04:36 2020 +1200
+
+    change knex config to production
+
+[33mcommit cb1bce443c65efc2f63fbd2c10626929c1abbb52[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 26 17:34:49 2020 +1200
+
+    move devDependencies needed for deployment into dependencies
+
+[33mcommit 7510f1830b611f2de3438d039bec948e3e154608[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Thu Apr 23 13:44:30 2020 +1200
+
+    complete shopping cart and start on the checkout/billing functionality
+
+[33mcommit 0d288fd56cd8948006dc570e443a88f58f68ea99[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Wed Apr 22 08:34:15 2020 +1200
+
+    complete add to cart, remove from cart, and update cart
+
+[33mcommit 92a29b882d62287f9c7142ac67648d3f7a7c4f0a[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Tue Apr 21 21:36:28 2020 +1200
+
+    implement redux and set up files for shopping cart
+
+[33mcommit 905ce874b3ceb9b9b84f9fe6b4cc1680281fc70a[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Mon Apr 20 22:28:02 2020 +1200
+
+    add carousels in homepage and product page
+
+[33mcommit e40948ef92c6392c05f57e3b192f4f3009521df0[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 19 21:59:20 2020 +1200
+
+    complete navbar styling v1.0
+
+[33mcommit 6f9a859b15dd465017019898389b4bb1b58d9a65[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 19 21:05:04 2020 +1200
+
+    complete filters dropdown and functionality
+
+[33mcommit 4b2fc906460bfdd6ff3db591e0ad9bf2ea021ee0[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 19 19:42:26 2020 +1200
+
+    complete custom categories selection for navbar
+
+[33mcommit 0c3a5e4908dbea5be6c041ae909ac29cd1455337[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sun Apr 19 18:56:02 2020 +1200
+
+    rearrange navbar layout and add custom background image
+
+[33mcommit 4e8fa6d4cca510707e4db03c4913ed35d0b22e64[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat Apr 18 11:59:13 2020 +1200
+
+    complete working search filter with multiple categories selection
+
+[33mcommit f62d478380c9cf80dfd24b2528f1a77ee2bbf4b4[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Sat Apr 18 10:35:12 2020 +1200
+
+    complete search filter and category filter for navbar in backend
+
+[33mcommit 180d9585a5f53d33888339d128ae04c7cc7c3a2d[m
+Author: albasychris <albasychris@gmail.com>
+Date:   Thu Apr 16 22:40:53 2020 +1200
+
+    make progress on the search bar and filters
+
+[33mcommit 12b8e607dc8ae5a2d86857b735f1fd811a0ed

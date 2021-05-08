@@ -109,42 +109,6 @@ export default function Navbar (props) {
                 to='/products'>
             PRODUCTS
               </Link>
-              <Link
-                name='custom'
-                onMouseDown={handleLinkClick}
-                className={`nav-link ${
-                  currentPage === 'custom' ? 'active' : ''
-                }`}
-                to='/custom'>
-            CUSTOM
-              </Link>
-              <Link
-                name='about'
-                onMouseDown={handleLinkClick}
-                className={`nav-link ${
-                  currentPage === 'about' ? 'active' : ''
-                }`}
-                to='/about'>
-            ABOUT
-              </Link>
-              <Link
-                name='careers'
-                onMouseDown={handleLinkClick}
-                className={`nav-link ${
-                  currentPage === 'careers' ? 'active' : ''
-                }`}
-                to='/careers'>
-            CONTACT
-              </Link>
-              <Link
-                name='careers'
-                onMouseDown={handleLinkClick}
-                className={`nav-link ${
-                  currentPage === 'careers' ? 'active' : ''
-                }`}
-                to='/careers'>
-            CAREERS
-              </Link>
             </div>
           </div>
           <div>
@@ -292,33 +256,6 @@ class Menu extends Component {
                       }`}
                       to='/products'>
             PRODUCTS
-                    </Link>
-                    <Link
-                      name='custom'
-                      onMouseDown={this.handleLinkClick}
-                      className={`nav-link ${
-                        this.state.currentPage === 'custom' ? 'active' : ''
-                      }`}
-                      to='/custom'>
-            CUSTOM
-                    </Link>
-                    <Link
-                      name='about'
-                      onMouseDown={this.handleLinkClick}
-                      className={`nav-link ${
-                        this.state.currentPage === 'about' ? 'active' : ''
-                      }`}
-                      to='/about'>
-            ABOUT
-                    </Link>
-                    <Link
-                      name='careers'
-                      onMouseDown={this.handleLinkClick}
-                      className={`nav-link ${
-                        this.state.currentPage === 'careers' ? 'active' : ''
-                      }`}
-                      to='/careers'>
-            CAREERS
                     </Link>
                   </div>
                   <div className='mobile-cart'>

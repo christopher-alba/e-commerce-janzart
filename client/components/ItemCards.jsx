@@ -7,117 +7,117 @@ import { getProducts } from '../api/index'
 import { Carousel } from 'react-responsive-carousel'
 var counter = 0
 class ItemCards extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			products: [],
-		}
-	}
+  constructor (props) {
+    super(props)
+    this.state = {
+      products: []
+    }
+  }
 	processFilters = filters => {
-		let letters = /^[0-9a-zA-Z\s]+$/
-		for (let i = 0; i < filters.length; i++) {
-			if (filters[i].match(letters) === null) {
-				filters = filters.replace(filters[i], '')
-				i--
-			}
-		}
+	  let letters = /^[0-9a-zA-Z\s]+$/
+	  for (let i = 0; i < filters.length; i++) {
+	    if (filters[i].match(letters) === null) {
+	      filters = filters.replace(filters[i], '')
+	      i--
+	    }
+	  }
 
-		return filters
+	  return filters
 	}
-	//search filter is a string that contains key words
-	componentDidUpdate(prevProps) {
-		if (
-			this.props.searchFilter != prevProps.searchFilter ||
+	// search filter is a string that contains key words
+	componentDidUpdate (prevProps) {
+	  if (
+	    this.props.searchFilter != prevProps.searchFilter ||
 			this.props.filter != prevProps.filter
-		) {
-			let cleanString, filterSearchArray
-			if (this.props.searchFilter !== undefined) {
-				cleanString = this.processFilters(this.props.searchFilter)
-				filterSearchArray = cleanString.split(' ')
-			} else {
-				filterSearchArray = this.props.searchFilter
-			}
+	  ) {
+	    let cleanString, filterSearchArray
+	    if (this.props.searchFilter !== undefined) {
+	      cleanString = this.processFilters(this.props.searchFilter)
+	      filterSearchArray = cleanString.split(' ')
+	    } else {
+	      filterSearchArray = this.props.searchFilter
+	    }
 
-			getProducts(filterSearchArray, this.props.filter).then(products => {
-				this.setState({ products: products })
-			})
-		}
+	    getProducts(filterSearchArray, this.props.filter).then(products => {
+	      this.setState({ products: products })
+	    })
+	  }
 	}
-	componentDidMount() {
-		let cleanString, filterSearchArray
-		if (this.props.searchFilter !== undefined) {
-			cleanString = this.processFilters(this.props.searchFilter)
-			filterSearchArray = cleanString.split(' ')
-		} else {
-			filterSearchArray = this.props.searchFilter
-		}
+	componentDidMount () {
+	  let cleanString, filterSearchArray
+	  if (this.props.searchFilter !== undefined) {
+	    cleanString = this.processFilters(this.props.searchFilter)
+	    filterSearchArray = cleanString.split(' ')
+	  } else {
+	    filterSearchArray = this.props.searchFilter
+	  }
 
-		getProducts(filterSearchArray, this.props.filter).then(products => {
-			this.setState({ products: products })
-		})
+	  getProducts(filterSearchArray, this.props.filter).then(products => {
+	    this.setState({ products: products })
+	  })
 	}
-	render() {
-		return this.props.carousel ? (
-			<Carousel autoPlay={true} infiniteLoop={true}>
-				{this.state.products.map(product => {
-					return (
-						<Link key={product.id} to={`/product/${product.id}`}>
-							<div className={`ui card ${true ? 'visible' : 'hidden'}`}>
-								<div className='image'>
-									<img
-										src={`https://picsum.photos/${1500}/500?random=${counter++}`}
-									/>
-								</div>
-								<div className='content'>
-									<div className='header'>{product.itemName}</div>
+	render () {
+	  return this.props.carousel ? (
+	    <Carousel autoPlay={true} infiniteLoop={true} showThumbs = {this.props.showThumbs}>
+	      {this.state.products.map(product => {
+	        return (
+	          <Link key={product.id} to={`/product/${product.id}`}>
+	            <div className={`ui card ${true ? 'visible' : 'hidden'}`}>
+	              <div className='image'>
+	                <img
+	                  src={`https://picsum.photos/${1500}/500?random=${counter++}`}
+	                />
+	              </div>
+	              <div className='content'>
+	                <div className='header'>{product.itemName}</div>
 
-									<div className='description'>{product.itemDescription}</div>
-								</div>
-								<div className='extra content'>
-									<div class='ui likes'>
-										<i class='heart icon'></i> {product.favouritesCount} Likes
-									</div>
-								</div>
-								<div className='extra content categories'>
-									{product.categories.map(category => {
-										return <div className='cardCategory'>#{category}</div>
-									})}
-								</div>
-							</div>
-						</Link>
-					)
-				})}
-			</Carousel>
-		) : (
-			this.state.products.map(product => {
-				return (
-					<Link key={product.id} to={`/product/${product.id}`}>
-						<div className={`ui card ${true ? 'visible' : 'hidden'}`}>
-							<div className='image'>
-								<img
-									src={`https://picsum.photos/${1500}/500?random=${counter++}`}
-								/>
-							</div>
-							<div className='content'>
-								<div className='header'>{product.itemName}</div>
+	                <div className='description'>{product.itemDescription}</div>
+	              </div>
+	              <div className='extra content'>
+	                <div className='ui likes'>
+	                  <i className='heart icon'></i> {product.favouritesCount} Likes
+	                </div>
+	              </div>
+	              <div className='extra content categories'>
+	                {product.categories.map(category => {
+	                  return <div className='cardCategory'>#{category}</div>
+	                })}
+	              </div>
+	            </div>
+	          </Link>
+	        )
+	      })}
+	    </Carousel>
+	  ) : (
+	    this.state.products.map(product => {
+	      return (
+	        <Link key={product.id} to={`/product/${product.id}`}>
+	          <div className={`ui card ${true ? 'visible' : 'hidden'}`}>
+	            <div className='image'>
+	              <img
+	                src={`https://picsum.photos/${1500}/500?random=${counter++}`}
+	              />
+	            </div>
+	            <div className='content'>
+	              <div className='header'>{product.itemName}</div>
 
-								<div className='description'>{product.itemDescription}</div>
-							</div>
-							<div className='extra content'>
-								<div class='ui likes'>
-									<i class='heart icon'></i> {product.favouritesCount} Likes
-								</div>
-							</div>
-							<div className='extra content categories'>
-								{product.categories.map(category => {
-									return <div className='cardCategory'>#{category}</div>
-								})}
-							</div>
-						</div>
-					</Link>
-				)
-			})
-		)
+	              <div className='description'>{product.itemDescription}</div>
+	            </div>
+	            <div className='extra content'>
+	              <div className='ui likes'>
+	                <i className='heart icon'></i> {product.favouritesCount} Likes
+	              </div>
+	            </div>
+	            <div className='extra content categories'>
+	              {product.categories.map(category => {
+	                return <div key={category.id}className='cardCategory'>#{category}</div>
+	              })}
+	            </div>
+	          </div>
+	        </Link>
+	      )
+	    })
+	  )
 	}
 }
 
