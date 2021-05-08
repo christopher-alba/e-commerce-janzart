@@ -13,7 +13,7 @@ module.exports = {
   staging: {
     client: 'postgresql',
     // The next line is where the application will read that environment variable to connect to the database
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE_URL + "?ssl=true",
     pool: {
       min: 2,
       max: 10
@@ -29,7 +29,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     // The next line is where the application will read that environment variable to connect to the database
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE_URL + "?ssl=true",
     pool: {
       min: 2,
       max: 10
