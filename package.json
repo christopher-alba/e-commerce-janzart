@@ -71,7 +71,7 @@
 		"redux-thunk": "^2.3.0",
 		"request": "^2.88.2",
 		"semantic-ui-react": "^0.88.2",
-		"sqlite3": "^4.1.1",
+		"sqlite3": "^5.0.2",
 		"stripe": "^8.46.0",
 		"superagent": "^5.2.2",
 		"webpack": "^4.43.0",
